@@ -25,8 +25,8 @@ const projects = [
     color: "bg-emerald-500/10",
     problem: "Managing daily energy usage and power-related routines is often unclear and fragmented, making it hard for users to stay efficient and consistent.",
     solution: "Power Plan introduces a clean, structured interface that helps users plan, track, and understand their energy usage through simple overviews and focused functionality.",
-      value: "Users gain better awareness of their energy habits, allowing them to make smarter decisions with less effort and no unnecessary complexity.",
-      image: "/powerplan.svg",
+    value: "Users gain better awareness of their energy habits, allowing them to make smarter decisions with less effort and no unnecessary complexity.",
+    image: "/powerplan.svg",
   },
   {
     id: "artisan-ecommerce",
@@ -86,11 +86,14 @@ const Work = () => {
                   index % 2 === 1 ? "lg:flex-row-reverse" : ""
                 }`}>
                   <div className={`${index % 2 === 1 ? "lg:order-2" : ""}`}>
-                    <div className={`aspect-[4/3] ${project.color} rounded-2xl flex items-center justify-center`}>
-                      <span className="text-6xl font-bold text-foreground/10">
-                        {project.title.charAt(0)}
-                      </span>
-                    </div>
+                            <div className={`aspect-[4/3] ${project.color} rounded-2xl flex items-center justify-center overflow-hidden`}>
+                                <img
+                                    src={project.image}
+                                    alt={project.title}
+                                    className="w-full h-full object-contain p-8"
+                                />
+                            </div>
+
                   </div>
 
                   <div className={`${index % 2 === 1 ? "lg:order-1" : ""}`}>
