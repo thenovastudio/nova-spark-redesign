@@ -25,7 +25,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         }
 
         await resend.emails.send({
-            from: "Nova Studio <onboarding@resend.dev>",
+            from: "Nova Studio <contact@thenovastudio.be>",
             to: ["contact@thenovastudio.be"],
             subject: `New contact from ${name}`,
             html: `
