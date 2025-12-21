@@ -15,7 +15,7 @@ const projects = [
     problem: "We needed our own digital presence that would effectively showcase our capabilities and convert visitors into clients.",
     solution: "A clean, conversion-focused website with strong visual hierarchy, smooth animations, and clear calls-to-action throughout.",
     value: "A professional home base that represents our brand and generates consistent project inquiries.",
-    image: "/placeholder.svg",
+    image: "/images/website-building.svg",
   },
   {
     id: "finance-app",
