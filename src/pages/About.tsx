@@ -80,7 +80,7 @@ const About = () => {
                 </div>
                 <div className="flex items-center gap-2 text-sm">
                   <Mail className="h-4 w-4 text-primary" />
-                  <span>hello@novastudio.be</span>
+                  <span>contact@thenovastudio.be</span>
                 </div>
               </div>
             </div>
