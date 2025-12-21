@@ -12,7 +12,7 @@ const projects = [
         color: "bg-primary/10",
     },
     {
-        id: "finance-app",
+        id: "powerplan-app",
         title: "Power Plan",
         category: "iOS App Concept",
         description:
@@ -21,11 +21,11 @@ const projects = [
         color: "bg-emerald-500/10",
     },
     {
-        id: "ecommerce",
-        title: "Artisan E-commerce",
-        category: "Web Design",
-        description: "An elegant online store for a local Belgian artisan.",
-        image: "/placeholder.svg",
+        id: "sleepreset-app",
+        title: "Sleep Reset",
+        category: "iOS App Concept",
+        description: "A simple sleep utility that helps users regain structure and consistency in their sleep schedule.",
+        image: "/sleepreset.svg",
         color: "bg-amber-500/10",
     },
 ];
