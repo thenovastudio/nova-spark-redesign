@@ -13,10 +13,10 @@ const projects = [
   },
   {
     id: "finance-app",
-    title: "Finance Dashboard",
+    title: "Power Plan",
     category: "iOS App Concept",
-    description: "A clean, intuitive interface for managing personal finances.",
-    image: "/placeholder.svg",
+    description: "Users gain better awareness of their energy habits, allowing them to make smarter decisions with less effort and no unnecessary complexity.",
+    image: "/powerplan.svg",
     color: "bg-emerald-500/10",
   },
   {
