@@ -40,15 +40,15 @@ const projects = [
     image: "/sleepreset.svg",
   },
   {
-    id: "law-firm",
-    title: "Modern Law Firm",
-    category: "Web Design",
+    id: "advanced-notes",
+    title: "Advanced Notes",
+    category: "Web + iOS App",
     year: "2023",
     color: "bg-slate-500/10",
-    problem: "An established law firm had an outdated website that didn't inspire confidence or generate new client inquiries.",
-    solution: "A professional, trustworthy design with clear practice areas, team bios, and easy contact options.",
-    value: "3x increase in website inquiries within the first two months after launch.",
-    image: "/placeholder.svg",
+    problem: "Most note-taking apps prioritize simplicity over structure, making it difficult for users with large volumes of notes to organize, retrieve, and manage information efficiently over time.",
+    solution: "Advanced Notes introduces a more structured approach to note-taking by offering clear categorization, flexible organization, and powerful search capabilities within a clean and focused interface.",
+    value: "Users can manage complex information more effectively, reduce cognitive overload, and find important notes faster, resulting in better productivity and long-term usability.",
+    image: "/advanced-notes.svg",
   },
 ];
 
