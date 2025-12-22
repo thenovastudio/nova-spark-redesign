@@ -1,8 +1,13 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
+import { useLanguage } from "@/lib/i18n/LanguageContext";
+import { translations } from "@/lib/i18n/translations";
 
 export function CTASection() {
+  const { language } = useLanguage();
+  const t = translations.cta;
+
   return (
     <section className="section-padding">
       <div className="container">
@@ -13,11 +18,10 @@ export function CTASection() {
 
           <div className="relative z-10 max-w-2xl">
             <h2 className="text-3xl md:text-5xl font-bold tracking-tight">
-              Ready to stand out online?
+              {t.title[language]}
             </h2>
             <p className="mt-4 text-lg opacity-80">
-              Let's build something that actually grows your business. 
-              No commitments — just a conversation about your goals.
+              {t.subtitle[language]}
             </p>
             <div className="mt-8 flex flex-col sm:flex-row gap-4">
               <Button 
@@ -26,7 +30,7 @@ export function CTASection() {
                 className="bg-background text-foreground hover:bg-background/90"
               >
                 <Link to="/contact">
-                  Get in Touch
+                  {t.button[language]}
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>
               </Button>
