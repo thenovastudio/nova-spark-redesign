@@ -1,39 +1,44 @@
 import { Link } from "react-router-dom";
 import { ArrowUpRight, Globe, Smartphone, Palette, Zap } from "lucide-react";
-
-const services = [
-  {
-    icon: Globe,
-    title: "Web Design & Development",
-    description: "Custom websites built for speed, conversions, and growth. No templates, no compromises.",
-  },
-  {
-    icon: Smartphone,
-    title: "Mobile-First Design",
-    description: "Responsive experiences that look and perform beautifully on every device.",
-  },
-  {
-    icon: Palette,
-    title: "Brand Identity",
-    description: "Visual identity systems that make your business instantly recognizable.",
-  },
-  {
-    icon: Zap,
-    title: "Performance Optimization",
-    description: "Lightning-fast load times that keep visitors engaged and improve SEO.",
-  },
-];
+import { useLanguage } from "@/lib/i18n/LanguageContext";
+import { translations } from "@/lib/i18n/translations";
 
 export function ServicesPreview() {
+  const { language } = useLanguage();
+  const t = translations.servicesPreview;
+
+  const services = [
+    {
+      icon: Globe,
+      title: t.webDesign.title[language],
+      description: t.webDesign.description[language],
+    },
+    {
+      icon: Smartphone,
+      title: t.mobile.title[language],
+      description: t.mobile.description[language],
+    },
+    {
+      icon: Palette,
+      title: t.brand.title[language],
+      description: t.brand.description[language],
+    },
+    {
+      icon: Zap,
+      title: t.performance.title[language],
+      description: t.performance.description[language],
+    },
+  ];
+
   return (
     <section className="section-padding bg-secondary/30">
       <div className="container">
         <div className="max-w-2xl mb-16">
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
-            What we do best
+            {t.title[language]}
           </h2>
           <p className="mt-4 text-lg text-muted-foreground">
-            Focused services designed to get you results. Nothing more, nothing less.
+            {t.subtitle[language]}
           </p>
         </div>
 

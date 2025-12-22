@@ -1,21 +1,26 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Menu, X } from "lucide-react";
-
-const navLinks = [
-  { href: "/", label: "Home" },
-  { href: "/work", label: "Work" },
-  { href: "/services", label: "Services" },
-  { href: "/why", label: "Why This Works" },
-  { href: "/about", label: "About" },
-  { href: "/contact", label: "Contact" },
-];
+import { Menu, X, Globe } from "lucide-react";
+import { useLanguage } from "@/lib/i18n/LanguageContext";
+import { translations } from "@/lib/i18n/translations";
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
+  const { language, toggleLanguage } = useLanguage();
+
+  const t = translations.nav;
+
+  const navLinks = [
+    { href: "/", label: t.home[language] },
+    { href: "/work", label: t.work[language] },
+    { href: "/services", label: t.services[language] },
+    { href: "/why", label: t.why[language] },
+    { href: "/about", label: t.about[language] },
+    { href: "/contact", label: t.contact[language] },
+  ];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -62,9 +67,19 @@ export function Navbar() {
           ))}
         </div>
 
-        <div className="hidden md:block">
+        <div className="hidden md:flex items-center gap-3">
+          {/* Language Toggle */}
+          <button
+            onClick={toggleLanguage}
+            className="flex items-center gap-1.5 px-3 py-2 rounded-lg text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-secondary/50 transition-colors"
+            aria-label="Toggle language"
+          >
+            <Globe className="h-4 w-4" />
+            <span className="uppercase">{language === "nl" ? "EN" : "NL"}</span>
+          </button>
+          
           <Button asChild variant="default" size="default">
-            <Link to="/contact">Start a Project</Link>
+            <Link to="/contact">{t.startProject[language]}</Link>
           </Button>
         </div>
 
@@ -99,8 +114,18 @@ export function Navbar() {
                 {link.label}
               </Link>
             ))}
+            
+            {/* Mobile Language Toggle */}
+            <button
+              onClick={toggleLanguage}
+              className="flex items-center gap-2 py-2 text-lg font-medium text-muted-foreground hover:text-foreground transition-colors"
+            >
+              <Globe className="h-5 w-5" />
+              <span>{language === "nl" ? "Switch to English" : "Schakel naar Nederlands"}</span>
+            </button>
+            
             <Button asChild variant="default" size="lg" className="mt-4">
-              <Link to="/contact">Start a Project</Link>
+              <Link to="/contact">{t.startProject[language]}</Link>
             </Button>
           </div>
         </div>

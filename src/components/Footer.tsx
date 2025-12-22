@@ -1,21 +1,27 @@
 import { Link } from "react-router-dom";
-
-const footerLinks = {
-  pages: [
-    { href: "/", label: "Home" },
-    { href: "/work", label: "Work" },
-    { href: "/services", label: "Services" },
-    { href: "/about", label: "About" },
-    { href: "/contact", label: "Contact" },
-  ],
-  social: [
-    { href: "https://linkedin.com", label: "LinkedIn" },
-    { href: "https://instagram.com", label: "Instagram" },
-    { href: "https://twitter.com", label: "Twitter" },
-  ],
-};
+import { useLanguage } from "@/lib/i18n/LanguageContext";
+import { translations } from "@/lib/i18n/translations";
 
 export function Footer() {
+  const { language } = useLanguage();
+  const t = translations.footer;
+  const nav = translations.nav;
+
+  const footerLinks = {
+    pages: [
+      { href: "/", label: nav.home[language] },
+      { href: "/work", label: nav.work[language] },
+      { href: "/services", label: nav.services[language] },
+      { href: "/about", label: nav.about[language] },
+      { href: "/contact", label: nav.contact[language] },
+    ],
+    social: [
+      { href: "https://linkedin.com", label: "LinkedIn" },
+      { href: "https://instagram.com", label: "Instagram" },
+      { href: "https://twitter.com", label: "Twitter" },
+    ],
+  };
+
   return (
     <footer className="border-t border-border bg-secondary/30">
       <div className="container py-16 md:py-20">
@@ -25,13 +31,12 @@ export function Footer() {
               Nova Studio
             </Link>
             <p className="mt-4 text-muted-foreground max-w-sm">
-              A Belgian digital studio crafting beautiful, high-performance websites 
-              that help businesses grow online.
+              {t.description[language]}
             </p>
           </div>
 
           <div>
-            <h4 className="font-semibold mb-4">Pages</h4>
+            <h4 className="font-semibold mb-4">{t.pages[language]}</h4>
             <ul className="space-y-3">
               {footerLinks.pages.map((link) => (
                 <li key={link.href}>
@@ -47,7 +52,7 @@ export function Footer() {
           </div>
 
           <div>
-            <h4 className="font-semibold mb-4">Connect</h4>
+            <h4 className="font-semibold mb-4">{t.connect[language]}</h4>
             <ul className="space-y-3">
               {footerLinks.social.map((link) => (
                 <li key={link.href}>
@@ -67,10 +72,10 @@ export function Footer() {
 
         <div className="mt-16 pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} Nova Studio. All rights reserved.
+            © {new Date().getFullYear()} Nova Studio. {t.rights[language]}
           </p>
           <p className="text-sm text-muted-foreground">
-            Based in Belgium 🇧🇪
+            {t.basedIn[language]}
           </p>
         </div>
       </div>
