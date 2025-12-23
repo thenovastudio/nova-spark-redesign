@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Menu, X, Globe } from "lucide-react";
+import { Menu, X, Globe, Sun, Moon } from "lucide-react";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
+import { useTheme } from "@/components/ThemeProvider";
 import { translations } from "@/lib/i18n/translations";
 
 export function Navbar() {
@@ -10,6 +11,7 @@ export function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
   const { language, toggleLanguage } = useLanguage();
+  const { theme, toggleTheme } = useTheme();
 
   const t = translations.nav;
 
@@ -67,7 +69,20 @@ export function Navbar() {
           ))}
         </div>
 
-        <div className="hidden md:flex items-center gap-3">
+        <div className="hidden md:flex items-center gap-2">
+          {/* Theme Toggle */}
+          <button
+            onClick={toggleTheme}
+            className="p-2 rounded-lg text-muted-foreground hover:text-foreground hover:bg-secondary/50 transition-colors"
+            aria-label="Toggle theme"
+          >
+            {theme === "light" ? (
+              <Moon className="h-4 w-4" />
+            ) : (
+              <Sun className="h-4 w-4" />
+            )}
+          </button>
+
           {/* Language Toggle */}
           <button
             onClick={toggleLanguage}
@@ -115,6 +130,19 @@ export function Navbar() {
               </Link>
             ))}
             
+            {/* Mobile Theme Toggle */}
+            <button
+              onClick={toggleTheme}
+              className="flex items-center gap-2 py-2 text-lg font-medium text-muted-foreground hover:text-foreground transition-colors"
+            >
+              {theme === "light" ? (
+                <Moon className="h-5 w-5" />
+              ) : (
+                <Sun className="h-5 w-5" />
+              )}
+              <span>{theme === "light" ? (language === "nl" ? "Donkere modus" : "Dark mode") : (language === "nl" ? "Lichte modus" : "Light mode")}</span>
+            </button>
+
             {/* Mobile Language Toggle */}
             <button
               onClick={toggleLanguage}
