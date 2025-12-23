@@ -13,36 +13,45 @@ const LanguageContext = createContext<LanguageContextType | undefined>(undefined
 export function LanguageProvider({ children }: { children: ReactNode }) {
   const [language, setLanguageState] = useState<Language>("nl");
   const [showSelector, setShowSelector] = useState(false);
-  const [isInitialized, setIsInitialized] = useState(false);
+
+  const safeGet = (key: string) => {
+    try {
+      return localStorage.getItem(key);
+    } catch {
+      return null;
+    }
+  };
+
+  const safeSet = (key: string, value: string) => {
+    try {
+      localStorage.setItem(key, value);
+    } catch {
+      // ignore (storage may be blocked)
+    }
+  };
 
   useEffect(() => {
-    // Check if user has visited before
-    const hasVisited = localStorage.getItem("hasVisitedBefore");
-    const savedLang = localStorage.getItem("language");
-    
-    if (hasVisited && savedLang) {
-      // Returning visitor with saved preference
-      setLanguageState(savedLang as Language);
-      setIsInitialized(true);
-    } else if (hasVisited) {
-      // Returning visitor without preference (shouldn't happen, but fallback)
-      setIsInitialized(true);
-    } else {
-      // First time visitor - show selector
-      setShowSelector(true);
+    const savedLang = safeGet("language");
+
+    if (savedLang === "nl" || savedLang === "en") {
+      setLanguageState(savedLang);
+      setShowSelector(false);
+      return;
     }
+
+    // No saved preference (or storage blocked) → show selector, but do NOT block the site.
+    setShowSelector(true);
   }, []);
 
   const setLanguage = (lang: Language) => {
     setLanguageState(lang);
-    localStorage.setItem("language", lang);
+    safeSet("language", lang);
+    safeSet("hasVisitedBefore", "true");
   };
 
   const handleLanguageSelect = (lang: Language) => {
     setLanguage(lang);
-    localStorage.setItem("hasVisitedBefore", "true");
     setShowSelector(false);
-    setIsInitialized(true);
   };
 
   const toggleLanguage = () => {
@@ -50,14 +59,13 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   };
 
   useEffect(() => {
-    // Update document lang attribute
     document.documentElement.lang = language;
   }, [language]);
 
   return (
     <LanguageContext.Provider value={{ language, setLanguage, toggleLanguage }}>
       <LanguageSelector open={showSelector} onSelect={handleLanguageSelect} />
-      {(isInitialized || showSelector) && children}
+      {children}
     </LanguageContext.Provider>
   );
 }
