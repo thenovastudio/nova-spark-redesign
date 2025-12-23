@@ -70,10 +70,23 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   );
 }
 
-export function useLanguage() {
+export function useLanguage(): LanguageContextType {
   const context = useContext(LanguageContext);
-  if (context === undefined) {
-    throw new Error("useLanguage must be used within a LanguageProvider");
+
+  // Defensive fallback: never hard-crash the whole site if the provider
+  // isn't mounted for some reason (e.g. hydration/initialization issues).
+  if (!context) {
+    if (import.meta.env.DEV) {
+      // eslint-disable-next-line no-console
+      console.warn("useLanguage used outside LanguageProvider; falling back to nl.");
+    }
+
+    return {
+      language: "nl",
+      setLanguage: () => {},
+      toggleLanguage: () => {},
+    };
   }
+
   return context;
 }

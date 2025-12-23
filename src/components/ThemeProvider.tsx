@@ -11,15 +11,24 @@ const ThemeProviderContext = createContext<ThemeProviderContextType | undefined>
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [theme, setTheme] = useState<Theme>(() => {
-    const stored = localStorage.getItem("nova-theme");
-    return (stored as Theme) || "light";
+    try {
+      const stored = localStorage.getItem("nova-theme");
+      return (stored as Theme) || "light";
+    } catch {
+      return "light";
+    }
   });
 
   useEffect(() => {
     const root = window.document.documentElement;
     root.classList.remove("light", "dark");
     root.classList.add(theme);
-    localStorage.setItem("nova-theme", theme);
+
+    try {
+      localStorage.setItem("nova-theme", theme);
+    } catch {
+      // ignore (storage may be blocked)
+    }
   }, [theme]);
 
   const toggleTheme = () => {
@@ -33,10 +42,21 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   );
 }
 
-export function useTheme() {
+export function useTheme(): ThemeProviderContextType {
   const context = useContext(ThemeProviderContext);
+
+  // Defensive fallback: don't crash if provider is missing.
   if (!context) {
-    throw new Error("useTheme must be used within a ThemeProvider");
+    if (import.meta.env.DEV) {
+      // eslint-disable-next-line no-console
+      console.warn("useTheme used outside ThemeProvider; falling back to light.");
+    }
+
+    return {
+      theme: "light",
+      toggleTheme: () => {},
+    };
   }
+
   return context;
 }
