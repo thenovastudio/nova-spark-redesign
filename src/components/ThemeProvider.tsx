@@ -16,16 +16,20 @@ function getSystemTheme(): ResolvedTheme {
     return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
 }
 
-export function ThemeProvider({ children }: { children: React.ReactNode }) {
-    const [theme, setTheme] = useState<Theme>(() => {
-        try {
-            const stored = localStorage.getItem("nova-theme");
-            return (stored as Theme) || "system";
-        } catch {
-            return "system";
+function getStoredTheme(): Theme {
+    try {
+        const stored = window.localStorage.getItem("nova-theme");
+        if (stored === "dark" || stored === "light" || stored === "system") {
+            return stored;
         }
-    });
+    } catch {
+        // localStorage blocked
+    }
+    return "system";
+}
 
+export function ThemeProvider({ children }: { children: React.ReactNode }) {
+    const [theme, setThemeState] = useState<Theme>(getStoredTheme);
     const [systemTheme, setSystemTheme] = useState<ResolvedTheme>(getSystemTheme);
 
     // Luister naar system theme changes
@@ -55,6 +59,10 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
             // ignore (storage may be blocked)
         }
     }, [theme, resolvedTheme]);
+
+    const setTheme = (newTheme: Theme) => {
+        setThemeState(newTheme);
+    };
 
     return (
         <ThemeProviderContext.Provider value={{ theme, resolvedTheme, setTheme }}>
