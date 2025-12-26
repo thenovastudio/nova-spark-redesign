@@ -8,31 +8,38 @@ interface LanguageSelectorProps {
 }
 
 export function LanguageSelector({ open, onSelect }: LanguageSelectorProps) {
-    console.log("LanguageSelector render:", open); // ← Debug log
+    console.log("LanguageSelector render:", open);
 
     return (
         <Dialog open={open}>
             <DialogContent
-                className="sm:max-w-md border-border/50 bg-background/95 backdrop-blur-sm"
-                style={{ zIndex: 9999 }} // ← Force hoge z-index
+                className="sm:max-w-md"
+                style={{
+                    zIndex: 9999,
+                    backgroundColor: 'white',
+                    color: 'black',
+                    border: '2px solid red',
+                    padding: '2rem'
+                }}
                 hideCloseButton
             >
                 <div className="flex flex-col items-center gap-6 py-4">
-                    <div className="flex items-center gap-2 text-primary">
+                    <div className="flex items-center gap-2" style={{ color: 'blue' }}>
                         <Globe className="h-8 w-8" />
                     </div>
 
                     <div className="text-center space-y-2">
-                        <h2 className="text-xl font-semibold text-foreground">
+                        <h2 className="text-xl font-semibold" style={{ color: 'black' }}>
                             Kies je taal / Choose your language
                         </h2>
-                        <p className="text-sm text-muted-foreground">
+                        <p className="text-sm" style={{ color: 'gray' }}>
                             Selecteer je voorkeurstaal / Select your preferred language
                         </p>
                     </div>
                     <div className="flex flex-col sm:flex-row gap-3 w-full">
                         <Button
                             onClick={() => onSelect("nl")}
+                            style={{ backgroundColor: 'blue', color: 'white' }}
                             className="flex-1 gap-2"
                             size="lg"
                         >
@@ -40,7 +47,7 @@ export function LanguageSelector({ open, onSelect }: LanguageSelectorProps) {
                         </Button>
                         <Button
                             onClick={() => onSelect("en")}
-                            variant="outline"
+                            style={{ backgroundColor: 'green', color: 'white' }}
                             className="flex-1 gap-2"
                             size="lg"
                         >
