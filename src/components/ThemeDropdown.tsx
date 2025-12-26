@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useTheme } from './ThemeProvider';
 import { Moon, Sun, Monitor } from 'lucide-react';
 
-export function ThemeDropdownWithIcons() {
+export function ThemeDropdown() {
     const { theme, setTheme } = useTheme();
     const [isOpen, setIsOpen] = useState(false);
 
