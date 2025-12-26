@@ -1,4 +1,3 @@
-import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Globe } from "lucide-react";
 
@@ -8,49 +7,60 @@ interface LanguageSelectorProps {
 }
 
 export function LanguageSelector({ open, onSelect }: LanguageSelectorProps) {
-    return (
-        <Dialog open={open} modal={true}>
-            <DialogContent
-                className="sm:max-w-md border-border/50 bg-background/95 backdrop-blur-sm"
-                style={{
-                    zIndex: 99999,  // ← Super hoog
-                    position: 'fixed',
-                    pointerEvents: 'auto'  // ← Belangrijk!
-                }}
-                hideCloseButton
-            >
-                <div className="flex flex-col items-center gap-6 py-4">
-                    <div className="flex items-center gap-2 text-primary">
-                        <Globe className="h-8 w-8" />
-                    </div>
+    if (!open) return null;
 
-                    <div className="text-center space-y-2">
-                        <h2 className="text-xl font-semibold text-foreground">
-                            Kies je taal / Choose your language
-                        </h2>
-                        <p className="text-sm text-muted-foreground">
-                            Selecteer je voorkeurstaal / Select your preferred language
-                        </p>
-                    </div>
-                    <div className="flex flex-col sm:flex-row gap-3 w-full">
-                        <Button
-                            onClick={() => onSelect("nl")}
-                            className="flex-1 gap-2"
-                            size="lg"
-                        >
-                            🇳🇱 Nederlands
-                        </Button>
-                        <Button
-                            onClick={() => onSelect("en")}
-                            variant="outline"
-                            className="flex-1 gap-2"
-                            size="lg"
-                        >
-                            🇬🇧 English
-                        </Button>
-                    </div>
+    return (
+        <div
+            style={{
+                position: 'fixed',
+                top: 0,
+                left: 0,
+                right: 0,
+                bottom: 0,
+                backgroundColor: 'rgba(0, 0, 0, 0.8)',
+                zIndex: 99999,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+            }}
+        >
+            <div
+                style={{
+                    backgroundColor: 'white',
+                    padding: '2rem',
+                    borderRadius: '8px',
+                    maxWidth: '500px',
+                    width: '90%',
+                }}
+            >
+                <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
+                    <Globe style={{ width: '32px', height: '32px', margin: '0 auto 1rem', color: '#3b82f6' }} />
+                    <h2 style={{ fontSize: '1.5rem', fontWeight: 'bold', color: 'black', marginBottom: '0.5rem' }}>
+                        Kies je taal / Choose your language
+                    </h2>
+                    <p style={{ fontSize: '0.875rem', color: '#6b7280' }}>
+                        Selecteer je voorkeurstaal / Select your preferred language
+                    </p>
                 </div>
-            </DialogContent>
-        </Dialog>
+
+                <div style={{ display: 'flex', gap: '1rem', flexDirection: 'column' }}>
+                    <Button
+                        onClick={() => onSelect("nl")}
+                        style={{ width: '100%', padding: '1rem', fontSize: '1.125rem' }}
+                        size="lg"
+                    >
+                        🇳🇱 Nederlands
+                    </Button>
+                    <Button
+                        onClick={() => onSelect("en")}
+                        variant="outline"
+                        style={{ width: '100%', padding: '1rem', fontSize: '1.125rem' }}
+                        size="lg"
+                    >
+                        🇬🇧 English
+                    </Button>
+                </div>
+            </div>
+        </div>
     );
 }
