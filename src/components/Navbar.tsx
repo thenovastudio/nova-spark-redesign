@@ -1,16 +1,17 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Menu, X, Globe } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
 import { ThemeDropdown } from "@/components/ThemeDropdown";
+import { LanguageDropdown } from "@/components/LanguageDropdown";
 import { translations } from "@/lib/i18n/translations";
 
 export function Navbar() {
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const location = useLocation();
-    const { language, toggleLanguage } = useLanguage();
+    const { language } = useLanguage();
 
     const t = translations.nav;
 
@@ -70,15 +71,8 @@ export function Navbar() {
                     {/* Theme Dropdown */}
                     <ThemeDropdown />
 
-                    {/* Language Toggle */}
-                    <button
-                        onClick={toggleLanguage}
-                        className="flex items-center gap-1.5 px-3 py-2 rounded-lg text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-secondary/50 transition-colors"
-                        aria-label="Toggle language"
-                    >
-                        <Globe className="h-4 w-4" />
-                        <span className="uppercase">{language === "nl" ? "EN" : "NL"}</span>
-                    </button>
+                    {/* Language Dropdown */}
+                    <LanguageDropdown />
 
                     <Button asChild variant="default" size="default">
                         <Link to="/contact">{t.startProject[language]}</Link>
@@ -121,14 +115,10 @@ export function Navbar() {
                             <ThemeDropdown />
                         </div>
 
-                        {/* Mobile Language Toggle */}
-                        <button
-                            onClick={toggleLanguage}
-                            className="flex items-center gap-2 py-2 text-lg font-medium text-muted-foreground hover:text-foreground transition-colors"
-                        >
-                            <Globe className="h-5 w-5" />
-                            <span>{language === "nl" ? "Switch to English" : "Schakel naar Nederlands"}</span>
-                        </button>
+                        {/* Mobile Language Dropdown */}
+                        <div className="py-2">
+                            <LanguageDropdown />
+                        </div>
 
                         <Button asChild variant="default" size="lg" className="mt-4">
                             <Link to="/contact">{t.startProject[language]}</Link>

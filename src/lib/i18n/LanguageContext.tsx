@@ -5,7 +5,6 @@ import { LanguageSelector } from "@/components/LanguageSelector";
 interface LanguageContextType {
     language: Language;
     setLanguage: (lang: Language) => void;
-    toggleLanguage: () => void;
 }
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
@@ -32,9 +31,9 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
 
     useEffect(() => {
         const savedLang = safeGet("language");
-        const hasVisited = safeGet("hasVisitedBefore"); // ← Check dit!
+        const hasVisited = safeGet("hasVisitedBefore");
 
-        if (savedLang === "nl" || savedLang === "en") {
+        if (savedLang === "nl" || savedLang === "en" || savedLang === "fr") {
             setLanguageState(savedLang);
             setShowSelector(false);
             return;
@@ -61,16 +60,12 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
         setShowSelector(false);
     };
 
-    const toggleLanguage = () => {
-        setLanguage(language === "nl" ? "en" : "nl");
-    };
-
     useEffect(() => {
         document.documentElement.lang = language;
     }, [language]);
 
     return (
-        <LanguageContext.Provider value={{ language, setLanguage, toggleLanguage }}>
+        <LanguageContext.Provider value={{ language, setLanguage }}>
             <LanguageSelector open={showSelector} onSelect={handleLanguageSelect} />
             {children}
         </LanguageContext.Provider>
@@ -87,7 +82,6 @@ export function useLanguage(): LanguageContextType {
         return {
             language: "nl",
             setLanguage: () => { },
-            toggleLanguage: () => { },
         };
     }
     return context;
