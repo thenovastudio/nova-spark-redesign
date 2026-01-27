@@ -3,6 +3,7 @@ import { Footer } from "@/components/Footer";
 import { CTASection } from "@/components/CTASection";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
 import { translations } from "@/lib/i18n/translations";
+import { SEOHead } from "@/components/SEOHead";
 
 const projects = [
   { id: "nova-studio", year: "2024", color: "bg-primary/10", image: "website-building.svg" },
@@ -25,6 +26,7 @@ const Work = () => {
 
   return (
     <main className="min-h-screen">
+      <SEOHead page="work" />
       <Navbar />
       <section className="pt-32 pb-16 md:pt-40 md:pb-20">
         <div className="container">

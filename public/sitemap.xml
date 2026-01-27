@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://thenovastudio.be/</loc>
+    <lastmod>2025-01-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="nl-BE" href="https://thenovastudio.be/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://thenovastudio.be/?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://thenovastudio.be/?lang=fr"/>
+  </url>
+  <url>
+    <loc>https://thenovastudio.be/services</loc>
+    <lastmod>2025-01-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="nl-BE" href="https://thenovastudio.be/services"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://thenovastudio.be/services?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://thenovastudio.be/services?lang=fr"/>
+  </url>
+  <url>
+    <loc>https://thenovastudio.be/work</loc>
+    <lastmod>2025-01-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="nl-BE" href="https://thenovastudio.be/work"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://thenovastudio.be/work?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://thenovastudio.be/work?lang=fr"/>
+  </url>
+  <url>
+    <loc>https://thenovastudio.be/why</loc>
+    <lastmod>2025-01-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="nl-BE" href="https://thenovastudio.be/why"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://thenovastudio.be/why?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://thenovastudio.be/why?lang=fr"/>
+  </url>
+  <url>
+    <loc>https://thenovastudio.be/about</loc>
+    <lastmod>2025-01-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="nl-BE" href="https://thenovastudio.be/about"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://thenovastudio.be/about?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://thenovastudio.be/about?lang=fr"/>
+  </url>
+  <url>
+    <loc>https://thenovastudio.be/contact</loc>
+    <lastmod>2025-01-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="nl-BE" href="https://thenovastudio.be/contact"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://thenovastudio.be/contact?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://thenovastudio.be/contact?lang=fr"/>
+  </url>
+</urlset>
