@@ -15,12 +15,12 @@ export const translations = {
     // Hero Section
     hero: {
         badge: { nl: "Digital Studio • België", en: "Digital Studio • Belgium", fr: "Studio Digital • Belgique" },
-        title1: { nl: "Wij bouwen websites die", en: "We build websites that", fr: "Nous créons des sites qui" },
-        titleHighlight: { nl: "écht werken", en: "actually work", fr: "fonctionnent vraiment" },
+        title1: { nl: "Moderne websites voor", en: "Modern websites for", fr: "Sites modernes pour" },
+        titleHighlight: { nl: "alle bedrijven", en: "every business", fr: "toutes les entreprises" },
         subtitle: {
-            nl: "Jouw online aanwezigheid moet leads genereren, niet alleen mooi zijn. Wij maken converterende websites voor bedrijven klaar om te groeien.",
-            en: "Your online presence should generate leads, not just look pretty. We craft high-converting websites for businesses ready to grow.",
-            fr: "Votre présence en ligne doit générer des leads, pas seulement être jolie. Nous créons des sites convertissants pour les entreprises prêtes à se développer.",
+            nl: "Meer vertrouwen. Meer klanten. Geen gedoe.",
+            en: "More trust. More customers. No hassle.",
+            fr: "Plus de confiance. Plus de clients. Sans tracas.",
         },
         cta: { nl: "Start Jouw Project", en: "Start Your Project", fr: "Démarrer Votre Projet" },
         ctaSecondary: { nl: "Bekijk Ons Werk", en: "View Our Work", fr: "Voir Notre Travail" },
