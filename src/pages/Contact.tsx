@@ -64,7 +64,7 @@ const Contact = () => {
         <div className="space-y-8">
           <div><h2 className="text-2xl font-bold mb-6">{t.info.title[language]}</h2><p className="text-muted-foreground">{t.info.description[language]}</p></div>
           <div className="space-y-6">
-            <div className="flex items-start gap-4"><div className="p-3 rounded-xl bg-primary/10"><Mail className="h-5 w-5 text-primary" /></div><div><h3 className="font-semibold">{t.info.email[language]}</h3><p className="text-muted-foreground">contact@thenovastudio.be</p></div></div>
+            <div className="flex items-start gap-4"><div className="p-3 rounded-xl bg-primary/10"><Mail className="h-5 w-5 text-primary" /></div><div><h3 className="font-semibold">{t.info.email[language]}</h3><p className="text-muted-foreground">webdevelopment@thenovastudio.be</p></div></div>
             <div className="flex items-start gap-4"><div className="p-3 rounded-xl bg-primary/10"><MapPin className="h-5 w-5 text-primary" /></div><div><h3 className="font-semibold">{t.info.location[language]}</h3><p className="text-muted-foreground">{t.info.locationValue[language]}</p></div></div>
             <div className="flex items-start gap-4"><div className="p-3 rounded-xl bg-primary/10"><Clock className="h-5 w-5 text-primary" /></div><div><h3 className="font-semibold">{t.info.responseTime[language]}</h3><p className="text-muted-foreground">{t.info.responseTimeValue[language]}</p></div></div>
           </div>
