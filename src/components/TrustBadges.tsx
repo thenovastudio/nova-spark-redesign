@@ -11,6 +11,7 @@ export function TrustBadges() {
     t.fixed[language],
     t.support[language],
     t.seo[language],
+    t.hosting[language],
   ];
 
   return (

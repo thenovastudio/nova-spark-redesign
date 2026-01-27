@@ -34,6 +34,7 @@ export const translations = {
         fixed: { nl: "Vaste prijs", en: "Fixed pricing", fr: "Prix fixe" },
         support: { nl: "Doorlopende ondersteuning", en: "Ongoing support", fr: "Support continu" },
         seo: { nl: "SEO geoptimaliseerd", en: "SEO optimized", fr: "Optimisé SEO" },
+        hosting: { nl: "Inclusief hosting & statistieken", en: "Hosting & analytics included", fr: "Hébergement & statistiques inclus" },
     },
 
     // Services Preview
