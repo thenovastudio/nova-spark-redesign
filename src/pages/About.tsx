@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
 import { translations } from "@/lib/i18n/translations";
+import { SEOHead } from "@/components/SEOHead";
 
 const About = () => {
   const { language } = useLanguage();
@@ -19,6 +20,7 @@ const About = () => {
 
   return (
     <main className="min-h-screen">
+      <SEOHead page="about" />
       <Navbar />
       <section className="pt-32 pb-16 md:pt-40 md:pb-20"><div className="container"><div className="max-w-3xl">
         <h1 className="text-4xl md:text-6xl font-bold tracking-tight">{t.title[language]}</h1>

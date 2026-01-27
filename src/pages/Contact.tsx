@@ -8,6 +8,7 @@ import { useToast } from "@/hooks/use-toast";
 import { Mail, MapPin, Clock, Send, CheckCircle2 } from "lucide-react";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
 import { translations } from "@/lib/i18n/translations";
+import { SEOHead } from "@/components/SEOHead";
 
 const Contact = () => {
   const { toast } = useToast();
@@ -38,6 +39,7 @@ const Contact = () => {
 
   return (
     <main className="min-h-screen">
+      <SEOHead page="contact" />
       <Navbar />
       <section className="pt-32 pb-16 md:pt-40 md:pb-20"><div className="container"><div className="max-w-3xl">
         <h1 className="text-4xl md:text-6xl font-bold tracking-tight">{t.title[language]}</h1>

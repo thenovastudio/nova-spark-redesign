@@ -6,16 +6,26 @@ import { ProcessSection } from "@/components/ProcessSection";
 import { PortfolioPreview } from "@/components/PortfolioPreview";
 import { CTASection } from "@/components/CTASection";
 import { Footer } from "@/components/Footer";
+import { SEOHead } from "@/components/SEOHead";
 
 const Index = () => {
   return (
     <main className="min-h-screen">
+      <SEOHead page="home" />
       <Navbar />
-      <HeroSection />
+      <header>
+        <HeroSection />
+      </header>
       <TrustBadges />
-      <ServicesPreview />
-      <ProcessSection />
-      <PortfolioPreview />
+      <section aria-label="Services">
+        <ServicesPreview />
+      </section>
+      <section aria-label="Process">
+        <ProcessSection />
+      </section>
+      <section aria-label="Portfolio">
+        <PortfolioPreview />
+      </section>
       <CTASection />
       <Footer />
     </main>
