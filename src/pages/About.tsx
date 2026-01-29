@@ -33,7 +33,7 @@ const About = () => {
           <div className="space-y-4 text-muted-foreground"><p>{t.storyP1[language]}</p><p>{t.storyP2[language]}</p><p>{t.storyP3[language]}</p></div>
           <div className="mt-8 flex flex-col sm:flex-row gap-4">
             <div className="flex items-center gap-2 text-sm"><MapPin className="h-4 w-4 text-primary" /><span>{t.basedIn[language]}</span></div>
-            <div className="flex items-center gap-2 text-sm"><Mail className="h-4 w-4 text-primary" /><span>contact@thenovastudio.be</span></div>
+            <div className="flex items-center gap-2 text-sm"><Mail className="h-4 w-4 text-primary" /><span>webdevelopment@thenovastudio.be</span></div>
           </div>
         </div>
       </div></div></section>
