@@ -110,19 +110,53 @@ const AdminDashboard = () => {
         alert("Fout bij het ophalen van contacten: " + error.message);
       }
     } else {
+      // Log the raw data to see what's coming from database
+      console.log("=== FETCH CONTACTS ===");
+      console.log("Total contacts fetched:", data?.length);
+      console.log("Raw data from database:", data);
+      
       // Ensure all contacts have archived property (even if null in DB)
-      const contactsWithArchived = (data || []).map(contact => ({
-        ...contact,
-        archived: contact.archived ?? false
-      }));
+      const contactsWithArchived = (data || []).map(contact => {
+        const processedContact = {
+          ...contact,
+          archived: contact.archived ?? false,
+          status: contact.status || "new" // Default to "new" if no status
+        };
+        console.log(`Contact ${contact.id}:`, {
+          name: contact.name,
+          statusFromDB: contact.status,
+          statusProcessed: processedContact.status,
+          archivedFromDB: contact.archived,
+          archivedProcessed: processedContact.archived
+        });
+        return processedContact;
+      });
       setContacts(contactsWithArchived);
+      console.log("=== FETCH CONTACTS END ===");
     }
     setLoading(false);
   };
 
   const updateStatus = async (id: number, status: string) => {
+    console.log("=== UPDATE STATUS START ===");
     console.log("Updating status for ID:", id, "to:", status);
     
+    // First, let's see what the current state is in the database
+    const { data: beforeData } = await supabase
+      .from("contact_requests")
+      .select("id, status")
+      .eq("id", id)
+      .single();
+    
+    console.log("Status BEFORE update in DB:", beforeData);
+    
+    // Optimistically update UI first
+    setContacts(prevContacts =>
+      prevContacts.map(contact =>
+        contact.id === id ? { ...contact, status } : contact
+      )
+    );
+
     const { data, error } = await supabase
       .from("contact_requests")
       .update({ status })
@@ -130,22 +164,41 @@ const AdminDashboard = () => {
       .select();
 
     if (error) {
-      console.error("Error updating status:", error);
+      console.error("❌ Error updating status:", error);
       alert("Fout bij het updaten: " + error.message);
+      // Revert optimistic update on error
+      fetchContacts();
     } else {
-      console.log("Status updated successfully:", data);
-      // Update local state immediately
-      setContacts(prevContacts =>
-        prevContacts.map(contact =>
-          contact.id === id ? { ...contact, status } : contact
-        )
-      );
+      console.log("✅ Status updated successfully in database:", data);
+      // Verify the update worked by checking the returned data
+      if (data && data.length > 0) {
+        console.log("✅ New status in DB:", data[0].status);
+        
+        // Double check by fetching again
+        const { data: verifyData } = await supabase
+          .from("contact_requests")
+          .select("id, status")
+          .eq("id", id)
+          .single();
+        console.log("✅ VERIFICATION - Status in DB after update:", verifyData);
+      }
     }
+    console.log("=== UPDATE STATUS END ===");
   };
 
   const toggleArchive = async (id: number, currentArchived?: boolean) => {
     const newArchivedState = !currentArchived;
-    console.log("Toggling archive for ID:", id, "to:", newArchivedState);
+    console.log("=== TOGGLE ARCHIVE START ===");
+    console.log("Toggling archive for ID:", id, "from:", currentArchived, "to:", newArchivedState);
+    
+    // First, let's see what the current state is in the database
+    const { data: beforeData } = await supabase
+      .from("contact_requests")
+      .select("id, archived")
+      .eq("id", id)
+      .single();
+    
+    console.log("Archived BEFORE update in DB:", beforeData);
     
     const { data, error } = await supabase
       .from("contact_requests")
@@ -154,10 +207,19 @@ const AdminDashboard = () => {
       .select();
 
     if (error) {
-      console.error("Error toggling archive:", error);
+      console.error("❌ Error toggling archive:", error);
       alert("Fout bij het archiveren: " + error.message);
     } else {
-      console.log("Archive toggled successfully:", data);
+      console.log("✅ Archive toggled successfully:", data);
+      
+      // Double check by fetching again
+      const { data: verifyData } = await supabase
+        .from("contact_requests")
+        .select("id, archived")
+        .eq("id", id)
+        .single();
+      console.log("✅ VERIFICATION - Archived in DB after update:", verifyData);
+      
       // Update local state immediately
       setContacts(prevContacts =>
         prevContacts.map(contact =>
@@ -169,6 +231,7 @@ const AdminDashboard = () => {
         setExpandedId(null);
       }
     }
+    console.log("=== TOGGLE ARCHIVE END ===");
   };
 
   const formatDate = (dateString: string) => {
