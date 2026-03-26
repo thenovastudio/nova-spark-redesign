@@ -15,12 +15,12 @@ export function TrustBadges() {
   ];
 
   return (
-    <section className="py-12 border-y border-border bg-secondary/20">
+    <section className="py-12 border-y border-border bg-background">
       <div className="container">
-        <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-4">
+        <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-6">
           {badges.map((badge) => (
-            <div key={badge} className="flex items-center gap-2 text-sm">
-              <CheckCircle2 className="h-4 w-4 text-primary" />
+            <div key={badge} className="flex items-center gap-3 text-sm font-medium">
+              <div className="w-1.5 h-1.5 rounded-full bg-primary" />
               <span className="text-muted-foreground">{badge}</span>
             </div>
           ))}

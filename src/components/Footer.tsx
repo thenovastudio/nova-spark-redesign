@@ -23,26 +23,27 @@ export function Footer() {
   };
 
   return (
-    <footer className="border-t border-border bg-secondary/30">
+    <footer className="border-t border-border bg-background">
       <div className="container py-16 md:py-20">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 pb-12 border-b border-border/50">
           <div className="md:col-span-2">
-            <Link to="/" className="text-xl font-bold tracking-tight">
-              Nova Studio
+            <Link to="/" className="text-2xl font-bold tracking-tight text-secondary flex items-center gap-2">
+              <span>Nova</span>
+              <span className="bg-primary text-primary-foreground px-3 py-1.5 rounded-md text-sm font-bold">Studio</span>
             </Link>
-            <p className="mt-4 text-muted-foreground max-w-sm">
+            <p className="mt-4 text-muted-foreground max-w-sm leading-relaxed">
               {t.description[language]}
             </p>
           </div>
 
           <div>
-            <h4 className="font-semibold mb-4">{t.pages[language]}</h4>
-            <ul className="space-y-3">
+            <h4 className="font-bold mb-6 text-secondary">{t.pages[language]}</h4>
+            <ul className="space-y-4">
               {footerLinks.pages.map((link) => (
                 <li key={link.href}>
                   <Link
                     to={link.href}
-                    className="text-muted-foreground hover:text-foreground transition-colors"
+                    className="text-sm text-muted-foreground hover:text-primary transition-colors duration-200"
                   >
                     {link.label}
                   </Link>
@@ -52,15 +53,15 @@ export function Footer() {
           </div>
 
           <div>
-            <h4 className="font-semibold mb-4">{t.connect[language]}</h4>
-            <ul className="space-y-3">
+            <h4 className="font-bold mb-6 text-secondary">{t.connect[language]}</h4>
+            <ul className="space-y-4">
               {footerLinks.social.map((link) => (
                 <li key={link.href}>
                   <a
                     href={link.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-muted-foreground hover:text-foreground transition-colors"
+                    className="text-sm text-muted-foreground hover:text-primary transition-colors duration-200"
                   >
                     {link.label}
                   </a>
@@ -70,11 +71,11 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-16 pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} Nova Studio. {t.rights[language]}
+        <div className="mt-12 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+          <p className="text-xs text-muted-foreground">
+            © {new Date().getFullYear()} Codebo. {t.rights[language]}
           </p>
-          <p className="text-sm text-muted-foreground">
+          <p className="text-xs text-muted-foreground">
             {t.basedIn[language]}
           </p>
         </div>

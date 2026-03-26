@@ -9,7 +9,6 @@ import { Send, CheckCircle2 } from "lucide-react";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
 import { translations } from "@/lib/i18n/translations";
 import { SEOHead } from "@/components/SEOHead";
-import { supabase } from "@/lib/supabase";
 
 const Contact = () => {
   const { toast } = useToast();
@@ -39,23 +38,8 @@ const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    const { error } = await supabase.from("contact_requests").insert({
-      name: formData.name,
-      email: formData.email,
-      company: formData.company,
-      message: formData.message,
-    });
-
-    if (error) {
-      console.error("Supabase insert error:", error);
-      toast({
-        title: t.toast.errorTitle[language],
-        description: t.toast.errorDesc[language],
-        variant: "destructive",
-      });
-      setIsSubmitting(false);
-      return;
-    }
+    // Simulate submission delay
+    await new Promise(resolve => setTimeout(resolve, 1000));
 
     setIsSubmitted(true);
     setFormData({ name: "", email: "", company: "", message: "" });
@@ -71,9 +55,9 @@ const Contact = () => {
       <SEOHead page="contact" />
       <Navbar />
 
-      <section className="pt-32 pb-16">
-        <div className="container max-w-3xl">
-          <h1 className="text-4xl md:text-6xl font-bold">
+      <section className="pt-32 pb-16 border-b border-border md:pb-20">
+        <div className="container max-w-3xl border-l-4 border-primary pl-6">
+          <h1 className="text-4xl md:text-6xl font-bold text-secondary">
             {t.title[language]}
           </h1>
           <p className="mt-6 text-xl text-muted-foreground">
@@ -82,12 +66,14 @@ const Contact = () => {
         </div>
       </section>
 
-      <section className="pb-24">
+      <section className="pb-24 pt-16">
         <div className="container max-w-2xl">
           {isSubmitted ? (
             <div className="text-center py-12">
-              <CheckCircle2 className="mx-auto h-12 w-12 text-primary" />
-              <h2 className="mt-4 text-2xl font-bold">
+              <div className="inline-flex justify-center items-center w-16 h-16 rounded-full bg-primary/10 border border-primary/20 mb-4">
+                <CheckCircle2 className="h-8 w-8 text-primary" />
+              </div>
+              <h2 className="mt-6 text-2xl font-bold text-secondary">
                 {t.success.title[language]}
               </h2>
               <p className="mt-2 text-muted-foreground">
@@ -96,7 +82,7 @@ const Contact = () => {
               <Button
                 onClick={() => setIsSubmitted(false)}
                 variant="outline"
-                className="mt-6"
+                className="mt-6 border-border hover:border-primary/50"
               >
                 Verstuur nog een bericht
               </Button>
@@ -134,7 +120,7 @@ const Contact = () => {
               <Button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full"
+                className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-semibold"
               >
                 {isSubmitting ? (
                   t.form.sending[language]

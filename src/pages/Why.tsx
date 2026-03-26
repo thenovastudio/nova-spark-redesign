@@ -23,39 +23,39 @@ const Why = () => {
     <main className="min-h-screen">
       <SEOHead page="why" />
       <Navbar />
-      <section className="pt-32 pb-16 md:pt-40 md:pb-20">
-        <div className="container"><div className="max-w-3xl">
-          <h1 className="text-4xl md:text-6xl font-bold tracking-tight">{t.title[language]}</h1>
+      <section className="pt-32 pb-16 md:pt-40 md:pb-20 border-b border-border">
+        <div className="container"><div className="max-w-3xl border-l-4 border-primary pl-6">
+          <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-secondary">{t.title[language]}</h1>
           <p className="mt-6 text-xl text-muted-foreground">{t.subtitle[language]}</p>
         </div></div>
       </section>
-      <section className="pb-24">
+      <section className="pb-24 pt-16">
         <div className="container">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            <div className="glass-card rounded-2xl p-8">
-              <h2 className="text-2xl font-bold mb-8">{t.soundFamiliar[language]}</h2>
+            <div className="border border-border bg-background rounded-md p-8">
+              <h2 className="text-2xl font-bold mb-8 text-secondary">{t.soundFamiliar[language]}</h2>
               <ul className="space-y-4">{t.problems[language].map((problem) => (<li key={problem} className="flex items-start gap-3"><XCircle className="h-5 w-5 text-destructive shrink-0 mt-0.5" /><span className="text-muted-foreground">{problem}</span></li>))}</ul>
             </div>
-            <div className="glass-card rounded-2xl p-8 border-primary/20">
-              <h2 className="text-2xl font-bold mb-8">{t.whatWeDeliver[language]}</h2>
-              <ul className="space-y-4">{t.solutions[language].map((solution) => (<li key={solution} className="flex items-start gap-3"><CheckCircle2 className="h-5 w-5 text-primary shrink-0 mt-0.5" /><span>{solution}</span></li>))}</ul>
+            <div className="border border-primary/30 bg-background rounded-md p-8">
+              <h2 className="text-2xl font-bold mb-8 text-secondary">{t.whatWeDeliver[language]}</h2>
+              <ul className="space-y-4">{t.solutions[language].map((solution) => (<li key={solution} className="flex items-start gap-3"><CheckCircle2 className="h-5 w-5 text-primary shrink-0 mt-0.5" /><span className="text-foreground">{solution}</span></li>))}</ul>
             </div>
           </div>
         </div>
       </section>
-      <section className="py-16 bg-secondary/30">
-        <div className="container"><div className="grid grid-cols-2 md:grid-cols-4 gap-8">{stats.map((stat) => (<div key={stat.label} className="text-center"><div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-primary/10 mb-4"><stat.icon className="h-6 w-6 text-primary" /></div><div className="text-3xl md:text-4xl font-bold">{stat.value}</div><div className="text-sm text-muted-foreground mt-1">{stat.label}</div></div>))}</div></div>
+      <section className="py-20 bg-background border-t border-border">
+        <div className="container"><div className="grid grid-cols-2 md:grid-cols-4 gap-8">{stats.map((stat) => (<div key={stat.label} className="text-center"><div className="inline-flex items-center justify-center w-12 h-12 rounded-md border border-primary/20 bg-primary/5 mb-4"><stat.icon className="h-6 w-6 text-primary" /></div><div className="text-3xl md:text-4xl font-bold text-secondary">{stat.value}</div><div className="text-sm text-muted-foreground mt-2 font-medium">{stat.label}</div></div>))}</div></div>
       </section>
-      <section className="section-padding">
+      <section className="section-padding bg-background">
         <div className="container"><div className="max-w-3xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">{t.approach.title[language]}</h2>
-          <div className="space-y-12">
-            <div><h3 className="text-xl font-semibold mb-3">{t.approach.resultsTitle[language]}</h3><p className="text-muted-foreground">{t.approach.resultsDesc[language]}</p></div>
-            <div><h3 className="text-xl font-semibold mb-3">{t.approach.speedTitle[language]}</h3><p className="text-muted-foreground">{t.approach.speedDesc[language]}</p></div>
-            <div><h3 className="text-xl font-semibold mb-3">{t.approach.surprisesTitle[language]}</h3><p className="text-muted-foreground">{t.approach.surprisesDesc[language]}</p></div>
-            <div><h3 className="text-xl font-semibold mb-3">{t.approach.lastingTitle[language]}</h3><p className="text-muted-foreground">{t.approach.lastingDesc[language]}</p></div>
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-secondary">{t.approach.title[language]}</h2>
+          <div className="space-y-12 border-l-4 border-primary pl-6">
+            <div><h3 className="text-xl font-bold mb-3 text-secondary">{t.approach.resultsTitle[language]}</h3><p className="text-muted-foreground leading-relaxed">{t.approach.resultsDesc[language]}</p></div>
+            <div><h3 className="text-xl font-bold mb-3 text-secondary">{t.approach.speedTitle[language]}</h3><p className="text-muted-foreground leading-relaxed">{t.approach.speedDesc[language]}</p></div>
+            <div><h3 className="text-xl font-bold mb-3 text-secondary">{t.approach.surprisesTitle[language]}</h3><p className="text-muted-foreground leading-relaxed">{t.approach.surprisesDesc[language]}</p></div>
+            <div><h3 className="text-xl font-bold mb-3 text-secondary">{t.approach.lastingTitle[language]}</h3><p className="text-muted-foreground leading-relaxed">{t.approach.lastingDesc[language]}</p></div>
           </div>
-          <div className="mt-12 text-center"><Button asChild variant="default" size="lg"><Link to="/contact">{t.letsTalk[language]}<ArrowRight className="ml-2 h-4 w-4" /></Link></Button></div>
+          <div className="mt-12 text-center"><Button asChild variant="default" size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold"><Link to="/contact">{t.letsTalk[language]}<ArrowRight className="ml-2 h-4 w-4" /></Link></Button></div>
         </div></div>
       </section>
       <CTASection />

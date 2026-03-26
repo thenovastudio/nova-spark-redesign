@@ -31,33 +31,44 @@ export function ServicesPreview() {
   ];
 
   return (
-    <section className="section-padding bg-secondary/30">
+    <section className="section-padding bg-background relative overflow-hidden">
+      {/* Background accent shapes */}
+      <div className="absolute top-20 right-10 w-72 h-72 bg-primary/5 rounded-full blur-3xl -z-10" />
+      
       <div className="container">
-        <div className="max-w-2xl mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
+        <div className="max-w-3xl mb-20">
+          <div className="inline-block mb-6 px-4 py-2 border border-primary/30 bg-primary/8 rounded-lg">
+            <span className="text-xs font-bold text-primary uppercase tracking-wider">{t.title[language]}</span>
+          </div>
+          <h2 className="text-5xl md:text-6xl font-bold tracking-tight mb-6">
             {t.title[language]}
           </h2>
-          <p className="mt-4 text-lg text-muted-foreground">
+          <p className="text-lg md:text-xl text-muted-foreground font-medium">
             {t.subtitle[language]}
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
           {services.map((service, index) => (
             <Link
               key={service.title}
               to="/services"
-              className="group glass-card rounded-2xl p-8 hover-lift"
+              className="group relative border-2 border-border bg-background rounded-lg p-8 hover:border-primary/60 hover:shadow-2xl transition-all duration-300 overflow-hidden"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
-              <div className="flex items-start justify-between">
-                <div className="p-3 rounded-xl bg-primary/10">
-                  <service.icon className="h-6 w-6 text-primary" />
+              {/* Background gradient on hover */}
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10" />
+              
+              <div className="relative z-10">
+                <div className="flex items-start justify-between mb-8">
+                  <div className="p-4 rounded-lg border-2 border-primary/30 bg-primary/10 group-hover:bg-primary/20 group-hover:border-primary/60 transition-all duration-300">
+                    <service.icon className="h-7 w-7 text-primary group-hover:scale-110 transition-transform duration-300" />
+                  </div>
+                  <ArrowUpRight className="h-6 w-6 text-primary/40 group-hover:text-primary group-hover:translate-x-2 group-hover:-translate-y-2 transition-all duration-300" />
                 </div>
-                <ArrowUpRight className="h-5 w-5 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 group-hover:-translate-y-1 transition-all" />
+                <h3 className="text-2xl md:text-3xl font-bold text-secondary mb-4 group-hover:text-primary transition-colors">{service.title}</h3>
+                <p className="text-base text-muted-foreground leading-relaxed group-hover:text-muted-foreground/90 transition-colors">{service.description}</p>
               </div>
-              <h3 className="mt-6 text-xl font-semibold">{service.title}</h3>
-              <p className="mt-2 text-muted-foreground">{service.description}</p>
             </Link>
           ))}
         </div>

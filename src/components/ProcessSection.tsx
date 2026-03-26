@@ -34,9 +34,9 @@ export function ProcessSection() {
   ];
 
   return (
-    <section className="section-padding">
+    <section className="section-padding bg-background">
       <div className="container">
-        <div className="text-center max-w-2xl mx-auto mb-16">
+        <div className="max-w-2xl mx-auto mb-16 border-b border-primary/20 pb-8">
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
             {t.title[language]}
           </h2>
@@ -49,22 +49,21 @@ export function ProcessSection() {
           {steps.map((step, index) => (
             <div
               key={step.number}
-              className="relative text-center lg:text-left"
+              className="relative"
             >
-              <div className="inline-flex items-center justify-center lg:justify-start">
-                <div className="relative">
-                  <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center">
-                    <step.icon className="h-7 w-7 text-primary" />
+              <div className="flex lg:flex-col items-start gap-4 lg:gap-0">
+                <div className="flex-shrink-0">
+                  <div className="w-16 h-16 rounded-md border border-primary/20 bg-primary/5 flex items-center justify-center">
+                    <span className="text-sm font-bold text-primary">{String(index + 1).padStart(2, '0')}</span>
                   </div>
-                  <span className="absolute -top-2 -right-2 w-6 h-6 rounded-full bg-primary text-primary-foreground text-xs font-bold flex items-center justify-center">
-                    {index + 1}
-                  </span>
+                </div>
+                <div className="flex-grow">
+                  <h3 className="text-lg font-bold text-secondary">{step.title}</h3>
+                  <p className="mt-2 text-muted-foreground text-sm leading-relaxed">
+                    {step.description}
+                  </p>
                 </div>
               </div>
-              <h3 className="mt-6 text-xl font-semibold">{step.title}</h3>
-              <p className="mt-2 text-muted-foreground">
-                {step.description}
-              </p>
             </div>
           ))}
         </div>

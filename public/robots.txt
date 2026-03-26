@@ -1,4 +1,4 @@
-# Nova Studio - Belgian Web Design Studio
+# Codebo - Belgian Web Design Studio
 # https://thenovastudio.be
 
 User-agent: Googlebot

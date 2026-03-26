@@ -2,110 +2,127 @@ import { Helmet } from "react-helmet-async";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 interface SEOHeadProps {
-  page?: "home" | "work" | "services" | "why" | "about" | "contact";
+  page?: "home" | "work" | "services" | "why" | "about" | "apps" | "contact";
 }
 
 const seoData = {
   home: {
     nl: {
-      title: "Nova Studio | Professionele Websites voor Bedrijven in België",
+      title: "Codebo | Professionele Websites voor Bedrijven in België",
       description: "Moderne, snelle websites die klanten aantrekken. ✓ Vaste prijs ✓ Inclusief hosting ✓ SEO geoptimaliseerd. Belgische webdesign studio voor MKB en zelfstandigen.",
       keywords: "website laten maken, webdesign België, professionele website, website voor bedrijven, webontwikkeling, website bouwen, webdesign bureau, zakelijke website",
     },
     en: {
-      title: "Nova Studio | Professional Websites for Businesses in Belgium",
+      title: "Codebo | Professional Websites for Businesses in Belgium",
       description: "Modern, fast websites that attract customers. ✓ Fixed pricing ✓ Hosting included ✓ SEO optimized. Belgian web design studio for SMBs and freelancers.",
       keywords: "website design, web design Belgium, professional website, business website, web development, website builder, design agency, corporate website",
     },
     fr: {
-      title: "Nova Studio | Sites Web Professionnels pour Entreprises en Belgique",
+      title: "Codebo | Sites Web Professionnels pour Entreprises en Belgique",
       description: "Sites web modernes et rapides qui attirent des clients. ✓ Prix fixe ✓ Hébergement inclus ✓ Optimisé SEO. Studio de design web belge pour PME et indépendants.",
       keywords: "création site web, design web Belgique, site professionnel, site entreprise, développement web, agence web, site vitrine",
     },
   },
   work: {
     nl: {
-      title: "Portfolio | Onze Beste Website Projecten | Nova Studio",
+      title: "Portfolio | Onze Beste Website Projecten | Codebo",
       description: "Bekijk onze portfolio van succesvolle websites voor Belgische bedrijven. Van webdesign tot volledige digitale oplossingen - ontdek wat wij voor jou kunnen doen.",
       keywords: "portfolio webdesign, website voorbeelden, webdesign projecten, website referenties, bedrijfswebsites, case studies",
     },
     en: {
-      title: "Portfolio | Our Best Website Projects | Nova Studio",
+      title: "Portfolio | Our Best Website Projects | Codebo",
       description: "View our portfolio of successful websites for Belgian businesses. From web design to complete digital solutions - discover what we can do for you.",
       keywords: "web design portfolio, website examples, web projects, website references, business websites, case studies",
     },
     fr: {
-      title: "Portfolio | Nos Meilleurs Projets Web | Nova Studio",
+      title: "Portfolio | Nos Meilleurs Projets Web | Codebo",
       description: "Découvrez notre portfolio de sites web réussis pour des entreprises belges. Du design au solutions digitales complètes.",
       keywords: "portfolio web, exemples sites, projets web, références, sites entreprises, études de cas",
     },
   },
   services: {
     nl: {
-      title: "Diensten | Webdesign & Ontwikkeling | Nova Studio",
+      title: "Diensten | Webdesign & Ontwikkeling | Codebo",
       description: "Professionele webdesign diensten: ✓ Custom websites ✓ Mobile-first design ✓ SEO optimalisatie ✓ Hosting & onderhoud. Vaste prijzen, geen verrassingen.",
       keywords: "webdesign diensten, website ontwikkeling, custom website, responsive design, SEO optimalisatie, website onderhoud, webdesign prijzen",
     },
     en: {
-      title: "Services | Web Design & Development | Nova Studio",
+      title: "Services | Web Design & Development | Codebo",
       description: "Professional web design services: ✓ Custom websites ✓ Mobile-first design ✓ SEO optimization ✓ Hosting & maintenance. Fixed prices, no surprises.",
       keywords: "web design services, website development, custom website, responsive design, SEO optimization, website maintenance, web design pricing",
     },
     fr: {
-      title: "Services | Design & Développement Web | Nova Studio",
+      title: "Services | Design & Développement Web | Codebo",
       description: "Services de design web professionnels: ✓ Sites sur mesure ✓ Design mobile-first ✓ Optimisation SEO ✓ Hébergement & maintenance. Prix fixes.",
       keywords: "services web design, développement site, site sur mesure, design responsive, optimisation SEO, maintenance web",
     },
   },
   why: {
     nl: {
-      title: "Waarom Nova Studio | Betrouwbare Website Partner | België",
-      description: "Waarom kiezen voor Nova Studio? ✓ Persoonlijke aanpak ✓ Transparante communicatie ✓ Meetbare resultaten. Ontdek hoe wij jouw bedrijf laten groeien.",
+      title: "Waarom Codebo | Betrouwbare Website Partner | België",
+      description: "Waarom kiezen voor Codebo? ✓ Persoonlijke aanpak ✓ Transparante communicatie ✓ Meetbare resultaten. Ontdek hoe wij jouw bedrijf laten groeien.",
       keywords: "waarom webdesign bureau, betrouwbaar webdesign, website partner, professionele aanpak, website expertise, Belgisch webbureau",
     },
     en: {
-      title: "Why Nova Studio | Reliable Website Partner | Belgium",
-      description: "Why choose Nova Studio? ✓ Personal approach ✓ Transparent communication ✓ Measurable results. Discover how we grow your business.",
+      title: "Why Codebo | Reliable Website Partner | Belgium",
+      description: "Why choose Codebo? ✓ Personal approach ✓ Transparent communication ✓ Measurable results. Discover how we grow your business.",
       keywords: "why web design agency, reliable web design, website partner, professional approach, website expertise, Belgian web agency",
     },
     fr: {
-      title: "Pourquoi Nova Studio | Partenaire Web Fiable | Belgique",
-      description: "Pourquoi choisir Nova Studio? ✓ Approche personnelle ✓ Communication transparente ✓ Résultats mesurables. Découvrez comment nous développons votre entreprise.",
+      title: "Pourquoi Codebo | Partenaire Web Fiable | Belgique",
+      description: "Pourquoi choisir Codebo? ✓ Approche personnelle ✓ Communication transparente ✓ Résultats mesurables. Découvrez comment nous développons votre entreprise.",
       keywords: "pourquoi agence web, design web fiable, partenaire site, approche professionnelle, expertise web, agence web belge",
     },
   },
   about: {
     nl: {
-      title: "Over Ons | Belgische Digital Studio | Nova Studio",
-      description: "Maak kennis met Nova Studio - een Belgische digital studio gepassioneerd over het maken van websites die resultaten leveren. Leer meer over onze aanpak en waarden.",
-      keywords: "over nova studio, belgisch webbureau, webdesign team, digital studio België, wie zijn wij, ons verhaal",
+      title: "Over Ons | Belgische Digital Studio | Codebo",
+      description: "Maak kennis met Codebo - een Belgische digital studio gepassioneerd over het maken van websites die resultaten leveren. Leer meer over onze aanpak en waarden.",
+      keywords: "over codebo, belgisch webbureau, webdesign team, digital studio België, wie zijn wij, ons verhaal",
     },
     en: {
-      title: "About Us | Belgian Digital Studio | Nova Studio",
-      description: "Meet Nova Studio - a Belgian digital studio passionate about creating websites that deliver results. Learn more about our approach and values.",
-      keywords: "about nova studio, belgian web agency, web design team, digital studio Belgium, who we are, our story",
+      title: "About Us | Belgian Digital Studio | Codebo",
+      description: "Meet Codebo - a Belgian digital studio passionate about creating websites that deliver results. Learn more about our approach and values.",
+      keywords: "about codebo, belgian web agency, web design team, digital studio Belgium, who we are, our story",
     },
     fr: {
-      title: "À Propos | Studio Digital Belge | Nova Studio",
-      description: "Découvrez Nova Studio - un studio digital belge passionné par la création de sites qui livrent des résultats. En savoir plus sur notre approche.",
-      keywords: "à propos nova studio, agence web belge, équipe web design, studio digital Belgique, qui sommes-nous, notre histoire",
+      title: "À Propos | Studio Digital Belge | Codebo",
+      description: "Découvrez Codebo - un studio digital belge passionné par la création de sites qui livrent des résultats. En savoir plus sur notre approche.",
+      keywords: "à propos codebo, agence web belge, équipe web design, studio digital Belgique, qui sommes-nous, notre histoire",
     },
   },
   contact: {
     nl: {
-      title: "Contact | Start Jouw Website Project | Nova Studio",
+      title: "Contact | Start Jouw Website Project | Codebo",
       description: "Klaar om jouw website te laten maken? Neem contact op voor een vrijblijvend gesprek. ✓ Snelle reactie ✓ Gratis advies ✓ Geen verplichtingen.",
       keywords: "contact webdesign, website offerte, webdesign aanvraag, gratis advies website, contact webbureau, project starten",
     },
     en: {
-      title: "Contact | Start Your Website Project | Nova Studio",
+      title: "Contact | Start Your Website Project | Codebo",
       description: "Ready to have your website built? Get in touch for a no-obligation conversation. ✓ Quick response ✓ Free advice ✓ No commitments.",
       keywords: "contact web design, website quote, web design inquiry, free website advice, contact web agency, start project",
     },
     fr: {
-      title: "Contact | Démarrez Votre Projet Web | Nova Studio",
+      title: "Contact | Démarrez Votre Projet Web | Codebo",
       description: "Prêt à faire créer votre site? Contactez-nous pour une conversation sans engagement. ✓ Réponse rapide ✓ Conseils gratuits ✓ Sans obligation.",
       keywords: "contact design web, devis site, demande web, conseils gratuits, contact agence web, démarrer projet",
+    },
+  },
+  apps: {
+    nl: {
+      title: "Onze Apps | Tools voor Jouw Bedrijf | Codebo",
+      description: "Ontdek de tools en platforms die we hebben gebouwd om bedrijven te helpen groeien. Monitra voor analytics, Social voor social media management.",
+      keywords: "monitra, social, analytics tools, social media management, website monitoring, business apps",
+    },
+    en: {
+      title: "Our Apps | Tools for Your Business | Codebo",
+      description: "Explore the tools and platforms we've built to help businesses thrive. Monitra for analytics, Social for social media management.",
+      keywords: "monitra, social, analytics tools, social media management, website monitoring, business apps",
+    },
+    fr: {
+      title: "Nos Applications | Outils pour Votre Entreprise | Codebo",
+      description: "Découvrez les outils et les plateformes que nous avons créés pour aider les entreprises. Monitra pour l'analytique, Social pour la gestion des médias sociaux.",
+      keywords: "monitra, social, outils analytique, gestion médias sociaux, surveillance site, applications métier",
     },
   },
 };
@@ -117,7 +134,7 @@ const getStructuredData = (page: string, language: string) => {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     "@id": `${baseUrl}/#organization`,
-    name: "Nova Studio",
+    name: "Codebo",
     description: language === "nl" 
       ? "Belgische digital studio gespecialiseerd in professionele websites voor bedrijven"
       : language === "fr"
@@ -157,7 +174,7 @@ const getStructuredData = (page: string, language: string) => {
   const webSite = {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    name: "Nova Studio",
+    name: "Codebo",
     url: baseUrl,
     potentialAction: {
       "@type": "SearchAction",
@@ -172,7 +189,7 @@ const getStructuredData = (page: string, language: string) => {
     serviceType: language === "nl" ? "Webdesign & Ontwikkeling" : "Web Design & Development",
     provider: {
       "@type": "LocalBusiness",
-      name: "Nova Studio",
+      name: "Codebo",
     },
     areaServed: {
       "@type": "Country",
@@ -224,7 +241,7 @@ export const SEOHead = ({ page = "home" }: SEOHeadProps) => {
       <meta name="title" content={data.title} />
       <meta name="description" content={data.description} />
       <meta name="keywords" content={data.keywords} />
-      <meta name="author" content="Nova Studio" />
+      <meta name="author" content="Codebo" />
       <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
       <link rel="canonical" href={currentUrl} />
 
@@ -241,7 +258,7 @@ export const SEOHead = ({ page = "home" }: SEOHeadProps) => {
       <meta property="og:description" content={data.description} />
       <meta property="og:image" content={`${baseUrl}/og-image.png`} />
       <meta property="og:locale" content={language === "nl" ? "nl_BE" : language === "fr" ? "fr_BE" : "en_US"} />
-      <meta property="og:site_name" content="Nova Studio" />
+      <meta property="og:site_name" content="Codebo" />
 
       {/* Twitter */}
       <meta name="twitter:card" content="summary_large_image" />

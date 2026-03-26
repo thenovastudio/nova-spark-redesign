@@ -28,34 +28,34 @@ const Work = () => {
     <main className="min-h-screen">
       <SEOHead page="work" />
       <Navbar />
-      <section className="pt-32 pb-16 md:pt-40 md:pb-20">
+      <section className="pt-32 pb-16 md:pt-40 md:pb-20 border-b border-border">
         <div className="container">
-          <div className="max-w-3xl">
+          <div className="max-w-3xl border-l-4 border-primary pl-6">
             <h1 className="text-4xl md:text-6xl font-bold tracking-tight">{t.title[language]}</h1>
             <p className="mt-6 text-xl text-muted-foreground">{t.subtitle[language]}</p>
           </div>
         </div>
       </section>
-      <section className="pb-24">
+      <section className="py-24">
         <div className="container">
-          <div className="space-y-24">
+          <div className="space-y-32">
             {projectData.map((project, index) => (
-              <article key={project.id} id={project.id} className="scroll-mt-32">
-                <div className={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-center`}>
+              <article key={project.id} id={project.id} className="scroll-mt-32 pb-24 border-b border-border last:border-0">
+                <div className={`grid grid-cols-1 lg:grid-cols-2 gap-16 items-center`}>
                   <div className={`${index % 2 === 1 ? "lg:order-2" : ""}`}>
-                    <div className={`aspect-[4/3] ${project.color} rounded-2xl flex items-center justify-center overflow-hidden`}>
+                    <div className={`aspect-[4/3] ${project.color} rounded-md flex items-center justify-center overflow-hidden border border-border/20`}>
                       <img src={project.image} alt={project.title} className="w-full h-full object-contain p-8" />
                     </div>
                   </div>
                   <div className={`${index % 2 === 1 ? "lg:order-1" : ""}`}>
-                    <div className="flex items-center gap-4 text-sm text-muted-foreground mb-4">
+                    <div className="flex items-center gap-4 text-sm text-primary font-medium mb-6 uppercase tracking-wider">
                       <span>{project.category}</span><span>•</span><span>{project.year}</span>
                     </div>
-                    <h2 className="text-3xl md:text-4xl font-bold">{project.title}</h2>
-                    <div className="mt-8 space-y-6">
-                      <div><h3 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-2">{t.problem[language]}</h3><p className="text-foreground">{project.problem}</p></div>
-                      <div><h3 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-2">{t.solution[language]}</h3><p className="text-foreground">{project.solution}</p></div>
-                      <div><h3 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-2">{t.value[language]}</h3><p className="text-foreground">{project.value}</p></div>
+                    <h2 className="text-3xl md:text-4xl font-bold text-secondary mb-8">{project.title}</h2>
+                    <div className="space-y-8">
+                      <div className="border-l-4 border-primary pl-6"><h3 className="text-sm font-bold text-secondary uppercase tracking-wider mb-3">{t.problem[language]}</h3><p className="text-foreground leading-relaxed">{project.problem}</p></div>
+                      <div className="border-l-4 border-primary pl-6"><h3 className="text-sm font-bold text-secondary uppercase tracking-wider mb-3">{t.solution[language]}</h3><p className="text-foreground leading-relaxed">{project.solution}</p></div>
+                      <div className="border-l-4 border-primary pl-6"><h3 className="text-sm font-bold text-secondary uppercase tracking-wider mb-3">{t.value[language]}</h3><p className="text-foreground leading-relaxed">{project.value}</p></div>
                     </div>
                   </div>
                 </div>

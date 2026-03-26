@@ -9,29 +9,34 @@ export function CTASection() {
   const t = translations.cta;
 
   return (
-    <section className="section-padding">
+    <section className="section-padding bg-background relative overflow-hidden">
+      {/* Background gradient shapes */}
+      <div className="absolute top-0 right-0 w-96 h-96 bg-primary/15 rounded-full blur-3xl -z-10" />
+      <div className="absolute bottom-0 left-1/4 w-80 h-80 bg-primary/10 rounded-full blur-3xl -z-10" />
+      
       <div className="container">
-        <div className="relative overflow-hidden rounded-3xl bg-foreground text-background p-12 md:p-20">
-          {/* Background decoration */}
-          <div className="absolute top-0 right-0 w-96 h-96 bg-primary/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
-          <div className="absolute bottom-0 left-0 w-64 h-64 bg-primary/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2" />
+        <div className="relative overflow-hidden rounded-xl bg-gradient-to-br from-secondary to-secondary/95 border-2 border-primary/30 p-12 md:p-20 shadow-2xl">
+          {/* Accent line */}
+          <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-primary/60 to-transparent" />
+          {/* Corner accent */}
+          <div className="absolute top-0 right-0 w-40 h-40 bg-primary/5 rounded-full blur-2xl" />
 
-          <div className="relative z-10 max-w-2xl">
-            <h2 className="text-3xl md:text-5xl font-bold tracking-tight">
+          <div className="relative z-10 max-w-3xl">
+            <h2 className="text-5xl md:text-7xl font-bold tracking-tight text-background leading-[0.95]">
               {t.title[language]}
             </h2>
-            <p className="mt-4 text-lg opacity-80">
+            <p className="mt-6 text-xl md:text-2xl text-background/85 font-medium leading-relaxed max-w-2xl">
               {t.subtitle[language]}
             </p>
-            <div className="mt-8 flex flex-col sm:flex-row gap-4">
+            <div className="mt-10 flex flex-col sm:flex-row gap-6">
               <Button 
                 asChild 
-                size="xl" 
-                className="bg-background text-foreground hover:bg-background/90"
+                size="lg" 
+                className="bg-primary hover:bg-primary/85 text-primary-foreground font-bold px-10 shadow-xl hover:shadow-2xl text-base"
               >
-                <Link to="/contact">
+                <Link to="/contact" className="inline-flex items-center gap-3">
                   {t.button[language]}
-                  <ArrowRight className="ml-2 h-5 w-5" />
+                  <ArrowRight className="h-5 w-5" />
                 </Link>
               </Button>
             </div>
