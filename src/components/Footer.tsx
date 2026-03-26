@@ -1,11 +1,25 @@
 import { Link } from "react-router-dom";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
 import { translations } from "@/lib/i18n/translations";
+import { useState, useEffect } from "react";
+import codeboLogo from "@/components/codebo-logo.png";
+import codeboLogoDark from "@/components/codebo-logo.darkmode.png";
 
 export function Footer() {
+  const [isDark, setIsDark] = useState(false);
   const { language } = useLanguage();
   const t = translations.footer;
   const nav = translations.nav;
+
+  useEffect(() => {
+    const checkDarkMode = () => {
+      setIsDark(document.documentElement.classList.contains("dark"));
+    };
+    checkDarkMode();
+    const observer = new MutationObserver(checkDarkMode);
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ["class"] });
+    return () => observer.disconnect();
+  }, []);
 
   const footerLinks = {
     pages: [
@@ -27,9 +41,8 @@ export function Footer() {
       <div className="container py-16 md:py-20">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 pb-12 border-b border-border/50">
           <div className="md:col-span-2">
-            <Link to="/" className="text-2xl font-bold tracking-tight text-secondary flex items-center gap-2">
-              <span>Nova</span>
-              <span className="bg-primary text-primary-foreground px-3 py-1.5 rounded-md text-sm font-bold">Studio</span>
+            <Link to="/" className="hover:opacity-80 transition-opacity inline-block">
+              <img src={isDark ? codeboLogoDark : codeboLogo} alt="Codebo" className="h-12 w-auto" />
             </Link>
             <p className="mt-4 text-muted-foreground max-w-sm leading-relaxed">
               {t.description[language]}
