@@ -84,7 +84,7 @@ const Contact = () => {
                 variant="outline"
                 className="mt-6 border-border hover:border-primary/50"
               >
-                Verstuur nog een bericht
+                {t.success.sendAnother[language]}
               </Button>
             </div>
           ) : (

@@ -1,6 +1,6 @@
-# Codebo – Website 🌐
+# Codevio – Website 🌐
 
-Dit is de officiële website van **Codebo**, een digitale studio gericht op moderne websites en webapplicaties met focus op design, performance en eenvoud.
+Dit is de officiële website van **Codevio**, een digitale studio gericht op moderne websites en webapplicaties met focus op design, performance en eenvoud.
 
 De website is gebouwd met een moderne webstack en wordt gehost op **Vercel**.
 

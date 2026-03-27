@@ -1,4 +1,4 @@
-import { CheckCircle2 } from "lucide-react";
+import { Zap, Lock, Clock, Search, Cloud } from "lucide-react";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
 import { translations } from "@/lib/i18n/translations";
 
@@ -7,23 +7,28 @@ export function TrustBadges() {
   const t = translations.badges;
 
   const badges = [
-    t.fast[language],
-    t.fixed[language],
-    t.support[language],
-    t.seo[language],
-    t.hosting[language],
+    { icon: Zap, label: t.fast[language] },
+    { icon: Lock, label: "Custom Code" },
+    { icon: Clock, label: "Quick Turnaround" },
+    { icon: Search, label: "SEO Ready" },
+    { icon: Cloud, label: t.hosting[language] },
   ];
 
   return (
-    <section className="py-12 border-y border-border bg-background">
+    <section className="py-16 md:py-20 border-b border-border bg-background/40">
       <div className="container">
-        <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-6">
-          {badges.map((badge) => (
-            <div key={badge} className="flex items-center gap-3 text-sm font-medium">
-              <div className="w-1.5 h-1.5 rounded-full bg-primary" />
-              <span className="text-muted-foreground">{badge}</span>
-            </div>
-          ))}
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-8">
+          {badges.map((badge) => {
+            const Icon = badge.icon;
+            return (
+              <div key={badge.label} className="flex flex-col items-center text-center gap-3">
+                <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center">
+                  <Icon className="h-6 w-6 text-primary" />
+                </div>
+                <p className="text-sm font-semibold text-muted-foreground">{badge.label}</p>
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>

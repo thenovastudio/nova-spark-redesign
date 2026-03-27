@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import { Button } from "@/components/ui/button";
-import { ArrowRight, ArrowUpRight } from "lucide-react";
+import { FlowHoverButton } from "@/components/ui/flow-hover-button";
+import { ArrowRight } from "lucide-react";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
 import { translations } from "@/lib/i18n/translations";
 
@@ -15,7 +15,7 @@ export function PortfolioPreview() {
       category: t.projects.novaStudio.category[language],
       description: t.projects.novaStudio.description[language],
       image: "/website-building.svg",
-      color: "bg-primary/10",
+      bgGradient: "from-blue-100 to-blue-50 dark:from-blue-950 dark:to-blue-900/30",
     },
     {
       id: "powerplan-app",
@@ -23,7 +23,7 @@ export function PortfolioPreview() {
       category: t.projects.powerPlan.category[language],
       description: t.projects.powerPlan.description[language],
       image: "/powerplan.svg",
-      color: "bg-emerald-500/10",
+      bgGradient: "from-emerald-100 to-emerald-50 dark:from-emerald-950 dark:to-emerald-900/30",
     },
     {
       id: "sleepreset-app",
@@ -31,69 +31,56 @@ export function PortfolioPreview() {
       category: t.projects.sleepReset.category[language],
       description: t.projects.sleepReset.description[language],
       image: "/sleepreset.svg",
-      color: "bg-amber-500/10",
+      bgGradient: "from-amber-100 to-amber-50 dark:from-amber-950 dark:to-amber-900/30",
     },
   ];
 
   return (
-    <section className="section-padding bg-background relative overflow-hidden">
-      {/* Background accent shapes */}
-      <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl -z-10" />
-      
+    <section className="section-padding bg-background">
       <div className="container">
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-20 pb-12 border-b-2 border-primary/20">
-          <div className="max-w-3xl">
-            <div className="inline-block mb-6 px-4 py-2 border border-primary/30 bg-primary/8 rounded-lg">
-              <span className="text-xs font-bold text-primary uppercase tracking-wider">{t.title[language]}</span>
-            </div>
-            <h2 className="text-5xl md:text-6xl font-bold tracking-tight mb-6">
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-16">
+          <div className="flex-1">
+            <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">
               {t.title[language]}
             </h2>
-            <p className="text-lg md:text-xl text-muted-foreground font-medium">
+            <p className="text-lg text-muted-foreground font-medium max-w-2xl">
               {t.subtitle[language]}
             </p>
           </div>
-          <Button asChild variant="outline" size="lg" className="border-2 border-border hover:border-primary/60 hover:shadow-lg font-bold whitespace-nowrap">
-            <Link to="/work" className="inline-flex items-center gap-3">
+          <FlowHoverButton asChild size="lg" variant="default">
+            <Link to="/work" className="inline-flex items-center gap-2 font-bold px-8 h-auto py-3 whitespace-nowrap">
               {t.viewAll[language]}
               <ArrowRight className="h-5 w-5" />
             </Link>
-          </Button>
+          </FlowHoverButton>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {projects.map((project) => (
             <Link
               key={project.id}
               to={`/work#${project.id}`}
-              className="group border-2 border-border rounded-lg overflow-hidden hover:border-primary/60 hover:shadow-2xl transition-all duration-300"
+              className="group flex flex-col overflow-hidden rounded-2xl border border-border/30 hover:border-primary/40 transition-all duration-300 hover:shadow-lg"
             >
-              {/* IMAGE */}
-              <div
-                className={`aspect-[4/3] ${project.color} flex items-center justify-center overflow-hidden bg-secondary/5 relative`}
-              >
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/0 to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10" />
+              {/* Image Section */}
+              <div className={`relative aspect-video bg-gradient-to-br ${project.bgGradient} overflow-hidden flex items-center justify-center`}>
                 <img
                   src={project.image}
                   alt={project.title}
-                  className="w-full h-full object-contain p-8 transition-transform duration-300 group-hover:scale-110 relative z-5"
+                  className="w-full h-full object-contain p-6 group-hover:scale-105 transition-transform duration-300"
                 />
               </div>
 
-              {/* CONTENT */}
-              <div className="p-8 border-t-2 border-border bg-background group-hover:bg-primary/2 transition-colors">
-                <div className="flex items-center justify-between mb-4">
-                  <span className="text-xs font-bold text-primary uppercase tracking-wider">
-                    {project.category}
-                  </span>
-                  <ArrowUpRight className="h-5 w-5 text-primary/40 group-hover:text-primary group-hover:translate-x-2 group-hover:-translate-y-2 transition-all duration-300" />
+              {/* Content Section */}
+              <div className="flex-1 p-6 flex flex-col">
+                <span className="text-xs font-bold text-primary/60 uppercase tracking-wider mb-2">{project.category}</span>
+                <h3 className="text-lg font-bold text-secondary mb-2 group-hover:text-primary transition-colors">{project.title}</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed flex-grow">{project.description}</p>
+                
+                <div className="mt-4 flex items-center gap-2 text-sm font-semibold text-primary">
+                  {language === "nl" ? "Bekijk project" : language === "fr" ? "Voir le projet" : "View project"}
+                  <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
                 </div>
-                <h3 className="text-2xl font-bold text-secondary mb-3 group-hover:text-primary transition-colors">
-                  {project.title}
-                </h3>
-                <p className="text-muted-foreground leading-relaxed">
-                  {project.description}
-                </p>
               </div>
             </Link>
           ))}

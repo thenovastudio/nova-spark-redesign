@@ -88,6 +88,7 @@ export const translations = {
             en: "From discovery to launch — a clear, stage-gate process that keeps you informed and delivers on schedule.",
             fr: "De la découverte au lancement — un processus clair qui vous tient informé et livre à temps.",
         },
+        stepLabel: { nl: "Stap", en: "Step", fr: "Étape" },
         discover: {
             title: { nl: "Strategie", en: "Strategy", fr: "Stratégie" },
             description: {
@@ -132,7 +133,7 @@ export const translations = {
         viewAll: { nl: "Bekijk Alle Projecten", en: "View All Projects", fr: "Voir Tous les Projets" },
         projects: {
             novaStudio: {
-                title: { nl: "Codebo Website", en: "Codebo Website", fr: "Site Codebo" },
+                title: { nl: "Codevio Website", en: "Codevio Website", fr: "Site Codevio" },
                 category: { nl: "Webdesign", en: "Web Design", fr: "Design Web" },
                 description: {
                     nl: "Ons eigen digitale thuis — ontworpen om bezoekers om te zetten in klanten.",
@@ -368,7 +369,7 @@ export const translations = {
 
     // Why Page
     why: {
-        title: { nl: "Waarom Codebo", en: "Why Codebo", fr: "Pourquoi Codebo" },
+        title: { nl: "Waarom Codevio", en: "Why Codevio", fr: "Pourquoi Codevio" },
         subtitle: {
             nl: "We begrijpen de uitdagingen waar Belgische bedrijven mee worstelen — omdat we ze telkens hebben opgelost.",
             en: "We understand the challenges Belgian businesses face — because we've solved them for dozens of companies.",
@@ -466,7 +467,7 @@ export const translations = {
 
     // About Page
     about: {
-        title: { nl: "Over Codebo", en: "About Codebo", fr: "À Propos de Codebo" },
+        title: { nl: "Over Codevio", en: "About Codevio", fr: "À Propos de Codevio" },
         subtitle: {
             nl: "Een Belgische digital studio gespecialiseerd in het bouwen van high-performance websites die bedrijven helpen groeien.",
             en: "A Belgian digital studio specializing in high-performance websites that drive measurable business growth.",
@@ -474,14 +475,14 @@ export const translations = {
         },
         storyTitle: { nl: "Ons Verhaal", en: "Our Story", fr: "Notre Histoire" },
         storyP1: {
-            nl: "Codebo is geboren uit een duidelijke waarneming: veel lokale bedrijven hebben websites die hun mogelijkheden niet weerspiegelen. Verouderde designs, trage laadsnelheden en gebrek aan conversie-focus kosten hen dagelijks klanten.",
-            en: "Codebo was founded on a clear observation: many local businesses have websites that undermine their potential. Outdated designs, poor performance, and lack of conversion strategy cost them leads every single day.",
-            fr: "Codebo a été fondé sur une observation claire : de nombreuses entreprises locales ont des sites qui n'exploitent pas leur potentiel. Des designs obsolètes, des performances faibles et une manque de stratégie de conversion leur coûtent des clients quotidiennement.",
+            nl: "Codevio is geboren uit een duidelijke waarneming: veel lokale bedrijven hebben websites die hun mogelijkheden niet weerspiegelen. Verouderde designs, trage laadsnelheden en gebrek aan conversie-focus kosten hen dagelijks klanten.",
+            en: "Codevio was founded on a clear observation: many local businesses have websites that undermine their potential. Outdated designs, poor performance, and lack of conversion strategy cost them leads every single day.",
+            fr: "Codevio a été fondé sur une observation claire : de nombreuses entreprises locales ont des sites qui n'exploitent pas leur potentiel. Des designs obsolètes, des performances faibles et une manque de stratégie de conversion leur coûtent des clients quotidiennement.",
         },
         storyP2: {
-            nl: "We startten Codebo om dit te veranderen. Onze missie is Belgische bedrijven dezelfde kwaliteit digitale aanwezigheid te geven die grote merken hebben, maar met duidelijke prijzen, snelle timelines en echte focus op meetbare resultaten.",
-            en: "We started Codebo to change that. Our mission is to give Belgian companies the same caliber of digital presence that enterprise brands enjoy, combined with transparent pricing, fast delivery, and genuine focus on measurable results.",
-            fr: "Nous avons créé Codebo pour changer cela. Notre mission est de donner aux entreprises belges la même qualité de présence numérique que les grandes marques, avec des prix transparents, une livraison rapide et un focus réel sur les résultats.",
+            nl: "We startten Codevio om dit te veranderen. Onze missie is Belgische bedrijven dezelfde kwaliteit digitale aanwezigheid te geven die grote merken hebben, maar met duidelijke prijzen, snelle timelines en echte focus op meetbare resultaten.",
+            en: "We started Codevio to change that. Our mission is to give Belgian companies the same caliber of digital presence that enterprise brands enjoy, combined with transparent pricing, fast delivery, and genuine focus on measurable results.",
+            fr: "Nous avons créé Codevio pour changer cela. Notre mission est de donner aux entreprises belges la même qualité de présence numérique que les grandes marques, avec des prix transparents, une livraison rapide et un focus réel sur les résultats.",
         },
         storyP3: {
             nl: "Elke website die we bouwen is ingericht met één doel: uw bedrijf helpen groeien. Mooi design is belangrijk, maar los van resultaten, is het waardeloos. We focussen op strategie, conversie en echte impact.",
@@ -565,6 +566,7 @@ export const translations = {
                 en: "Thanks for your message. We'll get back to you within 24 hours.",
                 fr: "Merci pour votre message. Nous vous répondrons dans les 24 heures.",
             },
+            sendAnother: { nl: "Verstuur nog een bericht", en: "Send Another Message", fr: "Envoyer un autre message" },
         },
         toast: {
             successTitle: { nl: "Bericht verzonden!", en: "Message sent!", fr: "Message envoyé !" },
@@ -601,6 +603,13 @@ export const translations = {
         },
         visitApp: { nl: "Bezoek App", en: "Visit App", fr: "Visiter l'App" },
         comingSoon: { nl: "Binnenkort Beschikbaar", en: "Coming Soon", fr: "Bientôt Disponible" },
+    },
+
+    // 404 Not Found Page
+    notFound: {
+        heading: { nl: "404", en: "404", fr: "404" },
+        message: { nl: "Oeps! Pagina niet gevonden", en: "Oops! Page not found", fr: "Oups ! Page non trouvée" },
+        cta: { nl: "Terug naar Home", en: "Return to Home", fr: "Retour à l'accueil" },
     },
 } as const;
 

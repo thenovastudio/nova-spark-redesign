@@ -2,8 +2,8 @@ import { Link } from "react-router-dom";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
 import { translations } from "@/lib/i18n/translations";
 import { useState, useEffect } from "react";
-import codeboLogo from "@/components/codebo-logo.png";
-import codeboLogoDark from "@/components/codebo-logo.darkmode.png";
+import codevioLogo from "@/components/codevio-logo.png";
+import codevioLogoDark from "@/components/codevio-logo.darkmode.png";
 
 export function Footer() {
   const [isDark, setIsDark] = useState(false);
@@ -42,7 +42,7 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 pb-12 border-b border-border/50">
           <div className="md:col-span-2">
             <Link to="/" className="hover:opacity-80 transition-opacity inline-block">
-              <img src={isDark ? codeboLogoDark : codeboLogo} alt="Codebo" className="h-12 w-auto" />
+              <img src={isDark ? codevioLogoDark : codevioLogo} alt="Codevio" className="h-12 w-auto" />
             </Link>
             <p className="mt-4 text-muted-foreground max-w-sm leading-relaxed">
               {t.description[language]}
@@ -86,7 +86,7 @@ export function Footer() {
 
         <div className="mt-12 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-xs text-muted-foreground">
-            © {new Date().getFullYear()} Codebo. {t.rights[language]}
+            © {new Date().getFullYear()} Codevio. {t.rights[language]}
           </p>
           <p className="text-xs text-muted-foreground">
             {t.basedIn[language]}

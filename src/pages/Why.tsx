@@ -2,7 +2,7 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { CTASection } from "@/components/CTASection";
 import { CheckCircle2, XCircle, ArrowRight, Clock, Target, TrendingUp, Users } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { FlowHoverButton } from "@/components/ui/flow-hover-button";
 import { Link } from "react-router-dom";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
 import { translations } from "@/lib/i18n/translations";
@@ -55,7 +55,7 @@ const Why = () => {
             <div><h3 className="text-xl font-bold mb-3 text-secondary">{t.approach.surprisesTitle[language]}</h3><p className="text-muted-foreground leading-relaxed">{t.approach.surprisesDesc[language]}</p></div>
             <div><h3 className="text-xl font-bold mb-3 text-secondary">{t.approach.lastingTitle[language]}</h3><p className="text-muted-foreground leading-relaxed">{t.approach.lastingDesc[language]}</p></div>
           </div>
-          <div className="mt-12 text-center"><Button asChild variant="default" size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold"><Link to="/contact">{t.letsTalk[language]}<ArrowRight className="ml-2 h-4 w-4" /></Link></Button></div>
+          <div className="mt-12 text-center"><FlowHoverButton asChild variant="default" size="lg"><Link to="/contact">{t.letsTalk[language]}<ArrowRight className="ml-2 h-4 w-4" /></Link></FlowHoverButton></div>
         </div></div>
       </section>
       <CTASection />

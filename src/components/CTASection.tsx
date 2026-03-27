@@ -1,47 +1,44 @@
 import { Link } from "react-router-dom";
-import { Button } from "@/components/ui/button";
+import { FlowHoverButton } from "@/components/ui/flow-hover-button";
 import { ArrowRight } from "lucide-react";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
 import { translations } from "@/lib/i18n/translations";
+import { ScrollReveal } from "./ScrollReveal";
 
 export function CTASection() {
   const { language } = useLanguage();
   const t = translations.cta;
 
   return (
-    <section className="section-padding bg-background relative overflow-hidden">
-      {/* Background gradient shapes */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-primary/15 rounded-full blur-3xl -z-10" />
-      <div className="absolute bottom-0 left-1/4 w-80 h-80 bg-primary/10 rounded-full blur-3xl -z-10" />
-      
+    <section className="section-padding bg-background">
       <div className="container">
-        <div className="relative overflow-hidden rounded-xl bg-gradient-to-br from-secondary to-secondary/95 border-2 border-primary/30 p-12 md:p-20 shadow-2xl">
-          {/* Accent line */}
-          <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-primary/60 to-transparent" />
-          {/* Corner accent */}
-          <div className="absolute top-0 right-0 w-40 h-40 bg-primary/5 rounded-full blur-2xl" />
-
-          <div className="relative z-10 max-w-3xl">
-            <h2 className="text-5xl md:text-7xl font-bold tracking-tight text-background leading-[0.95]">
-              {t.title[language]}
-            </h2>
-            <p className="mt-6 text-xl md:text-2xl text-background/85 font-medium leading-relaxed max-w-2xl">
-              {t.subtitle[language]}
-            </p>
-            <div className="mt-10 flex flex-col sm:flex-row gap-6">
-              <Button 
-                asChild 
-                size="lg" 
-                className="bg-primary hover:bg-primary/85 text-primary-foreground font-bold px-10 shadow-xl hover:shadow-2xl text-base"
+        <ScrollReveal delay={0} direction="up">
+          <div className="relative overflow-hidden rounded-3xl bg-secondary border border-border/30 p-8 md:p-16 lg:p-24">
+            {/* Decorative elements */}
+            <div className="absolute top-0 right-0 w-72 h-72 bg-primary/10 rounded-full blur-3xl -z-10" />
+            <div className="absolute bottom-0 left-0 w-80 h-80 bg-primary/5 rounded-full blur-3xl -z-10" />
+            
+            <div className="relative z-10 max-w-3xl">
+              <h2 className="text-5xl md:text-6xl font-bold tracking-tight text-background mb-6 leading-tight">
+                {t.title[language]}
+              </h2>
+              <p className="text-xl md:text-2xl text-background/80 font-medium mb-12 leading-relaxed max-w-2xl">
+                {t.subtitle[language]}
+              </p>
+              
+              <FlowHoverButton 
+                asChild
+                variant="outline"
+                icon={<ArrowRight className="h-5 w-5" />}
+                className="border-background/40 text-background hover:text-secondary"
               >
-                <Link to="/contact" className="inline-flex items-center gap-3">
+                <Link to="/contact">
                   {t.button[language]}
-                  <ArrowRight className="h-5 w-5" />
                 </Link>
-              </Button>
+              </FlowHoverButton>
             </div>
           </div>
-        </div>
+        </ScrollReveal>
       </div>
     </section>
   );

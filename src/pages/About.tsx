@@ -1,7 +1,7 @@
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { MapPin, Mail, ArrowRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { FlowHoverButton } from "@/components/ui/flow-hover-button";
 import { Link } from "react-router-dom";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
 import { translations } from "@/lib/i18n/translations";
@@ -27,7 +27,7 @@ const About = () => {
         <p className="mt-6 text-xl text-muted-foreground">{t.subtitle[language]}</p>
       </div></div></section>
       <section className="pb-24 pt-16"><div className="container"><div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-        <div className="aspect-square bg-secondary/5 rounded-md overflow-hidden border border-border"><img src="/about.svg" alt="Codebo workspace" className="w-full h-full object-cover" /></div>
+        <div className="aspect-square bg-secondary/5 rounded-md overflow-hidden border border-border"><img src="/about.svg" alt="Codevio workspace" className="w-full h-full object-cover" /></div>
         <div>
           <h2 className="text-3xl font-bold mb-8 text-secondary">{t.storyTitle[language]}</h2>
           <div className="space-y-4 text-muted-foreground leading-relaxed"><p>{t.storyP1[language]}</p><p>{t.storyP2[language]}</p><p>{t.storyP3[language]}</p></div>
@@ -44,7 +44,9 @@ const About = () => {
       <section className="section-padding bg-background"><div className="container"><div className="max-w-2xl mx-auto text-center border-t border-primary/20 pt-16">
         <h2 className="text-3xl md:text-4xl font-bold text-secondary">{t.workTogether[language]}</h2>
         <p className="mt-4 text-lg text-muted-foreground">{t.workTogetherDesc[language]}</p>
-        <Button asChild variant="default" size="lg" className="mt-8 bg-primary hover:bg-primary/90 text-primary-foreground font-semibold"><Link to="/contact">{t.startConversation[language]}<ArrowRight className="ml-2 h-4 w-4" /></Link></Button>
+        <FlowHoverButton asChild variant="default" size="lg" className="mt-8">
+          <Link to="/contact">{t.startConversation[language]}<ArrowRight className="ml-2 h-4 w-4" /></Link>
+        </FlowHoverButton>
       </div></div></section>
       <Footer />
     </main>

@@ -3,7 +3,7 @@ import { Footer } from "@/components/Footer";
 import { CTASection } from "@/components/CTASection";
 import { ProcessSection } from "@/components/ProcessSection";
 import { Globe, Smartphone, Palette, Zap, Search, BarChart3, ArrowRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { FlowHoverButton } from "@/components/ui/flow-hover-button";
 import { Link } from "react-router-dom";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
 import { translations } from "@/lib/i18n/translations";
@@ -57,9 +57,9 @@ const Services = () => {
           <div className="max-w-2xl mx-auto text-center">
             <h2 className="text-3xl md:text-4xl font-bold text-secondary">{t.pricing.title[language]}</h2>
             <p className="mt-4 text-lg text-muted-foreground leading-relaxed">{t.pricing.description[language]}</p>
-            <Button asChild variant="default" size="lg" className="mt-8 bg-primary hover:bg-primary/90 text-primary-foreground font-semibold">
+            <FlowHoverButton asChild variant="default" size="lg" className="mt-8">
               <Link to="/contact">{t.pricing.button[language]}<ArrowRight className="ml-2 h-4 w-4" /></Link>
-            </Button>
+            </FlowHoverButton>
           </div>
         </div>
       </section>
