@@ -1,5 +1,5 @@
 # Codevio - Belgian Web Design Studio
-# https://thenovastudio.be
+# https://www.codevio.be
 
 User-agent: Googlebot
 Allow: /
@@ -23,4 +23,4 @@ Allow: /
 Crawl-delay: 2
 
 # Sitemap location
-Sitemap: https://thenovastudio.be/sitemap.xml
+Sitemap: https://www.codevio.be/sitemap.xml

@@ -128,7 +128,7 @@ const seoData = {
 };
 
 const getStructuredData = (page: string, language: string) => {
-  const baseUrl = "https://thenovastudio.be";
+  const baseUrl = "https://www.codevio.be";
   
   const organization = {
     "@context": "https://schema.org",
@@ -145,12 +145,12 @@ const getStructuredData = (page: string, language: string) => {
     logo: `${baseUrl}/favicon.png`,
     image: `${baseUrl}/og-image.png`,
     telephone: "+32 XXX XX XX XX",
-    email: "contact@thenovastudio.be",
+    email: "webdevelopment@codevio.be",
     contactPoint: {
       "@type": "ContactPoint",
       contactType: "Customer Support",
       telephone: "+32 XXX XX XX XX",
-      email: "contact@thenovastudio.be",
+      email: "webdevelopment@codevio.be",
       areaServed: "BE",
     },
     address: {
@@ -182,7 +182,7 @@ const getStructuredData = (page: string, language: string) => {
     logo: `${baseUrl}/favicon.png`,
     image: `${baseUrl}/og-image.png`,
     telephone: "+32 XXX XX XX XX",
-    email: "contact@thenovastudio.be",
+    email: "webdevelopment@codevio.be",
     address: {
       "@type": "PostalAddress",
       addressCountry: "BE",
@@ -410,7 +410,7 @@ const getStructuredData = (page: string, language: string) => {
 export const SEOHead = ({ page = "home" }: SEOHeadProps) => {
   const { language } = useLanguage();
   const data = seoData[page][language];
-  const baseUrl = "https://thenovastudio.be";
+  const baseUrl = "https://www.codevio.be";
   const currentUrl = page === "home" ? baseUrl : `${baseUrl}/${page}`;
   const structuredData = getStructuredData(page, language);
 

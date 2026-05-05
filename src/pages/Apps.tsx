@@ -45,7 +45,7 @@ const Apps = () => {
           : language === "en"
           ? "Track visitor behavior, conversions, and performance metrics. Make data-driven decisions with detailed reports and insights."
           : "Suivez le comportement des visiteurs, les conversions et les métriques de performance. Prenez des décisions basées sur les données.",
-      url: "https://monitra.thenovastudio.be/",
+      url: "https://monitra.codevio.be/",
       gradient: "from-blue-500 to-cyan-500",
       gradientFrom: "from-blue-600",
       gradientTo: "to-blue-500",
@@ -91,7 +91,7 @@ const Apps = () => {
           : language === "en"
           ? "Save time by scheduling posts in advance. Track engagement across all platforms. Optimize your social strategy with analytics."
           : "Gagnez du temps en programmant vos messages. Suivez l'engagement sur toutes les plateformes.",
-      url: "https://social.thenovastudio.be/",
+      url: "https://social.codevio.be/",
       gradient: "from-purple-500 to-pink-500",
       gradientFrom: "from-purple-600",
       gradientTo: "to-purple-500",

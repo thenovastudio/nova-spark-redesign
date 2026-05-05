@@ -88,8 +88,8 @@ const Contact = () => {
     {
       icon: Mail,
       label: t.info.email[language],
-      value: "webdevelopment@thenovastudio.be",
-      href: "mailto:webdevelopment@thenovastudio.be",
+      value: "webdevelopment@codevio.be",
+      href: "mailto:webdevelopment@codevio.be",
     },
     {
       icon: MapPin,

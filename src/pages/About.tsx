@@ -33,7 +33,7 @@ const About = () => {
           <div className="space-y-4 text-muted-foreground leading-relaxed"><p>{t.storyP1[language]}</p><p>{t.storyP2[language]}</p><p>{t.storyP3[language]}</p></div>
           <div className="mt-8 flex flex-col sm:flex-row gap-6">
             <div className="flex items-center gap-3 text-sm font-medium"><div className="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0" /><span className="text-foreground">{t.basedIn[language]}</span></div>
-            <div className="flex items-center gap-3 text-sm font-medium"><div className="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0" /><span className="text-foreground">webdevelopment@thenovastudio.be</span></div>
+            <div className="flex items-center gap-3 text-sm font-medium"><div className="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0" /><span className="text-foreground">webdevelopment@codevio.be</span></div>
           </div>
         </div>
       </div></div></section>
