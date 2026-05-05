@@ -16,28 +16,14 @@ const Index = () => {
     <main className="min-h-screen">
       <SEOHead page="home" />
       <Navbar />
-      <header>
-        <HeroSection />
-      </header>
+      <HeroSection />
       <TrustBadges />
-      <section aria-label="Services">
-        <ServicesPreview />
-      </section>
-      <section aria-label="Statistics">
-        <StatsSection />
-      </section>
-      <section aria-label="Process">
-        <ProcessSection />
-      </section>
-      <section aria-label="Portfolio">
-        <PortfolioPreview />
-      </section>
-      <section aria-label="Testimonials">
-        <TestimonialsSection />
-      </section>
-      <section aria-label="FAQ">
-        <FAQSection />
-      </section>
+      <ServicesPreview />
+      <StatsSection />
+      <ProcessSection />
+      <PortfolioPreview />
+      <TestimonialsSection />
+      <FAQSection />
       <CTASection />
       <Footer />
     </main>

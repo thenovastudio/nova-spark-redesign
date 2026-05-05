@@ -6,31 +6,31 @@ export function StatsSection() {
 
   const stats = [
     {
-      nl: { end: 50, label: 'Websites Gebouwd' },
-      en: { end: 50, label: 'Websites Built' },
-      fr: { end: 50, label: 'Sites Construits' },
+      nl: { end: 50, label: 'Websites opgeleverd' },
+      en: { end: 50, label: 'Websites delivered' },
+      fr: { end: 50, label: 'Sites livrés' },
     },
     {
-      nl: { end: 98, label: 'Klant Tevredenheid %', suffix: '%' },
-      en: { end: 98, label: 'Client Satisfaction %', suffix: '%' },
-      fr: { end: 98, label: 'Satisfaction Client %', suffix: '%' },
+      nl: { end: 98, label: 'Klanttevredenheid', suffix: '%' },
+      en: { end: 98, label: 'Client satisfaction', suffix: '%' },
+      fr: { end: 98, label: 'Satisfaction client', suffix: '%' },
     },
     {
-      nl: { end: 4, label: 'Externe Lancering Weken', suffix: 'w' },
-      en: { end: 4, label: 'Average Launch Weeks', suffix: 'w' },
-      fr: { end: 4, label: 'Semaines de Lancement Moyennes', suffix: 'w' },
+      nl: { end: 4, label: 'Weken gemiddelde oplevering', suffix: '' },
+      en: { end: 4, label: 'Weeks avg. delivery', suffix: '' },
+      fr: { end: 4, label: 'Semaines livraison moy.', suffix: '' },
     },
     {
-      nl: { end: 40, label: 'Toename Conversies %', suffix: '%' },
-      en: { end: 40, label: 'Avg. Conversion Increase %', suffix: '%' },
-      fr: { end: 40, label: 'Augmentation Moyenne des Conversions %', suffix: '%' },
+      nl: { end: 40, label: 'Meer conversies gemiddeld', suffix: '%' },
+      en: { end: 40, label: 'Avg. conversion lift', suffix: '%' },
+      fr: { end: 40, label: 'Augmentation moy. conversions', suffix: '%' },
     },
   ]
 
   const t = language as keyof typeof stats[0]
 
   return (
-    <section className="section-padding bg-gradient-to-b from-primary/5 to-background border-b border-border">
+    <section className="py-16 md:py-20 border-y border-border">
       <div className="container">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
           {stats.map((stat, index) => (

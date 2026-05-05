@@ -1,98 +1,66 @@
 import { Link } from "react-router-dom";
 import { FlowHoverButton } from "@/components/ui/flow-hover-button";
-import { ArrowRight, CheckCircle2 } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
 import { translations } from "@/lib/i18n/translations";
-import { ScrollReveal } from "./ScrollReveal";
 
 export function HeroSection() {
   const { language } = useLanguage();
   const t = translations.hero;
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center pt-24 pb-16 md:pt-32 md:pb-24 overflow-hidden">
-      {/* Minimalist background elements */}
-      <div className="absolute top-0 left-0 w-full h-full -z-10 overflow-hidden pointer-events-none">
-        <div className="absolute top-20 left-1/4 w-96 h-96 bg-gradient-to-br from-primary/10 to-transparent rounded-full blur-3xl animate-pulse" />
-        <div className="absolute bottom-0 right-1/3 w-72 h-72 bg-gradient-to-tl from-primary/5 to-transparent rounded-full blur-3xl" />
-      </div>
-      
-      <div className="container relative z-10 py-8">
-        <div className="max-w-4xl mx-auto">
-          {/* Badge */}
-          <ScrollReveal delay={0} direction="down">
-            <div className="mb-8 flex justify-center">
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 border border-primary/40 rounded-full bg-primary/5 text-xs font-bold text-primary uppercase tracking-wider">
-                <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-                {t.badge[language]}
-              </div>
-            </div>
-          </ScrollReveal>
+    <section className="relative min-h-[90vh] flex items-end pb-20 md:pb-28 pt-32 md:pt-40 overflow-hidden">
+      {/* Ambient glow — right side */}
+      <div className="absolute top-1/4 right-[5%] w-[450px] h-[450px] bg-primary/[0.08] rounded-full blur-[100px] pointer-events-none" />
+      <div className="absolute top-[35%] right-[12%] w-[250px] h-[250px] bg-primary/[0.12] rounded-full blur-[80px] pointer-events-none" />
 
-          {/* Main heading */}
-          <ScrollReveal delay={100} direction="up">
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight text-center leading-tight mb-8">
-              {t.title1[language]}{" "}
-              <span className="text-transparent bg-clip-text" style={{ backgroundImage: 'var(--gradient-accent)' }}>
-                {t.titleHighlight[language]}
-              </span>
-            </h1>
-          </ScrollReveal>
+      <div className="container relative z-10">
+        <div className="max-w-3xl">
+          {/* Eyebrow */}
+          <p className="text-sm font-medium text-primary tracking-wide mb-6 uppercase">
+            {language === "nl" ? "Webdesign Studio — België" : language === "fr" ? "Studio Web — Belgique" : "Web Design Studio — Belgium"}
+          </p>
+
+          {/* Headline */}
+          <h1 className="text-5xl md:text-7xl lg:text-[5.5rem] font-bold tracking-tight leading-[0.95] mb-8 text-secondary">
+            {t.title1[language]}{" "}
+            <span className="text-primary">{t.titleHighlight[language]}</span>
+          </h1>
 
           {/* Subtitle */}
-          <ScrollReveal delay={200} direction="up">
-            <p className="text-lg md:text-2xl text-center text-muted-foreground max-w-3xl mx-auto mb-12 leading-relaxed font-medium">
-              {t.subtitle[language]}
-            </p>
-          </ScrollReveal>
+          <p className="text-lg md:text-xl text-muted-foreground max-w-xl mb-10 leading-relaxed">
+            {t.subtitle[language]}
+          </p>
 
-          {/* CTA Buttons */}
-          <ScrollReveal delay={300} direction="up">
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
-              <FlowHoverButton
-                asChild
-                icon={<ArrowRight className="h-5 w-5" />}
-                className="px-8"
-              >
-                <Link to="/contact">
-                  {t.cta[language]}
-                </Link>
-              </FlowHoverButton>
-              <FlowHoverButton
-                asChild
-                variant="outline"
-                className="px-8"
-              >
-                <Link to="/work">
-                  {t.ctaSecondary[language]}
-                </Link>
-              </FlowHoverButton>
-            </div>
-          </ScrollReveal>
+          {/* CTA */}
+          <div className="flex flex-col sm:flex-row items-start gap-4 mb-16">
+            <FlowHoverButton
+              asChild
+              icon={<ArrowRight className="h-5 w-5" />}
+              className="px-8"
+            >
+              <Link to="/contact">{t.cta[language]}</Link>
+            </FlowHoverButton>
+            <FlowHoverButton
+              asChild
+              variant="outline"
+              className="px-8"
+            >
+              <Link to="/work">{t.ctaSecondary[language]}</Link>
+            </FlowHoverButton>
+          </div>
 
-          {/* Trust indicators */}
-          <ScrollReveal delay={400} direction="up">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
-              <div className="space-y-2">
-                <div className="flex justify-center">
-                  <div className="w-2.5 h-2.5 rounded-full bg-green-500" />
-                </div>
-                <p className="text-sm font-semibold text-muted-foreground">{t.available[language]}</p>
-              </div>
-              <div className="space-y-2">
-                <div className="flex justify-center">
-                  <CheckCircle2 className="h-5 w-5 text-primary" />
-                </div>
-                <p className="text-sm font-semibold text-muted-foreground">2-4 Week Delivery</p>
-              </div>
-              <div className="space-y-2">
-                <div className="flex justify-center">
-                  <div className="w-2.5 h-2.5 rounded-full bg-primary" />
-                </div>
-                <p className="text-sm font-semibold text-muted-foreground">{t.trusted[language]}</p>
-              </div>
-            </div>
-          </ScrollReveal>
+          {/* Proof line */}
+          <div className="flex items-center gap-6 text-sm text-muted-foreground">
+            <span className="flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-green-500" />
+              {t.available[language]}
+            </span>
+            <span className="hidden sm:inline text-border">|</span>
+            <span className="hidden sm:inline">
+              {language === "nl" ? "Oplevering in 2–4 weken" : language === "fr" ? "Livraison en 2–4 semaines" : "Delivery in 2–4 weeks"}
+            </span>
+          </div>
         </div>
       </div>
     </section>
