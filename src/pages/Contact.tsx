@@ -88,8 +88,8 @@ const Contact = () => {
     {
       icon: Mail,
       label: t.info.email[language],
-      value: "webdevelopment@codevio.be",
-      href: "mailto:webdevelopment@codevio.be",
+      value: "contact@codevio.be",
+      href: "mailto:contact@codevio.be",
     },
     {
       icon: MapPin,
@@ -258,11 +258,10 @@ const Contact = () => {
                         <div className="space-y-2">
                           <label
                             htmlFor="contact-name"
-                            className={`text-sm font-semibold transition-colors duration-200 ${
-                              focusedField === "name"
-                                ? "text-primary"
-                                : "text-foreground"
-                            }`}
+                            className={`text-sm font-semibold transition-colors duration-200 ${focusedField === "name"
+                              ? "text-primary"
+                              : "text-foreground"
+                              }`}
                           >
                             {t.form.name[language]}
                           </label>
@@ -281,11 +280,10 @@ const Contact = () => {
                         <div className="space-y-2">
                           <label
                             htmlFor="contact-email"
-                            className={`text-sm font-semibold transition-colors duration-200 ${
-                              focusedField === "email"
-                                ? "text-primary"
-                                : "text-foreground"
-                            }`}
+                            className={`text-sm font-semibold transition-colors duration-200 ${focusedField === "email"
+                              ? "text-primary"
+                              : "text-foreground"
+                              }`}
                           >
                             {t.form.email[language]}
                           </label>
@@ -308,11 +306,10 @@ const Contact = () => {
                       <div className="space-y-2">
                         <label
                           htmlFor="contact-company"
-                          className={`text-sm font-semibold transition-colors duration-200 ${
-                            focusedField === "company"
-                              ? "text-primary"
-                              : "text-foreground"
-                          }`}
+                          className={`text-sm font-semibold transition-colors duration-200 ${focusedField === "company"
+                            ? "text-primary"
+                            : "text-foreground"
+                            }`}
                         >
                           {t.form.company[language]}
                         </label>
@@ -332,11 +329,10 @@ const Contact = () => {
                       <div className="space-y-2">
                         <label
                           htmlFor="contact-message"
-                          className={`text-sm font-semibold transition-colors duration-200 ${
-                            focusedField === "message"
-                              ? "text-primary"
-                              : "text-foreground"
-                          }`}
+                          className={`text-sm font-semibold transition-colors duration-200 ${focusedField === "message"
+                            ? "text-primary"
+                            : "text-foreground"
+                            }`}
                         >
                           {t.form.message[language]}
                         </label>
