@@ -20,12 +20,6 @@ import { useLanguage } from "@/lib/i18n/LanguageContext";
 import { translations } from "@/lib/i18n/translations";
 import { SEOHead } from "@/components/SEOHead";
 import { ScrollReveal } from "@/components/ScrollReveal";
-import { createClient } from "@supabase/supabase-js";
-
-const supabase = createClient(
-  "https://dvlvbgptrkzngxceahfc.supabase.co",
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImR2bHZiZ3B0cmt6bmd4Y2VhaGZjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU3MjA4OTQsImV4cCI6MjA5MTI5Njg5NH0.Ntum3NZsgRuGon_EJjVAxVNbFk_VrEugFd1PIZmEEo8"
-);
 
 const Contact = () => {
   const { toast } = useToast();
@@ -57,14 +51,21 @@ const Contact = () => {
     setIsSubmitting(true);
 
     try {
-      const { error } = await supabase.from("contact_requests").insert({
-        name: formData.name,
-        email: formData.email,
-        company: formData.company || null,
-        message: formData.message,
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          company: formData.company || null,
+          message: formData.message,
+        }),
       });
 
-      if (error) throw error;
+      if (!response.ok) {
+        const data = await response.json().catch(() => ({}));
+        throw new Error(data.error || "Failed to send message");
+      }
 
       setIsSubmitted(true);
       setFormData({ name: "", email: "", company: "", message: "" });
