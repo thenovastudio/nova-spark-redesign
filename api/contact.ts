@@ -67,8 +67,16 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     });
 
     return res.status(200).json({ success: true });
-  } catch (error) {
+  } catch (error: any) {
     console.error("Email send error:", error);
-    return res.status(500).json({ error: "Failed to send email" });
+    return res.status(500).json({
+      error: "Failed to send email",
+      details: error?.message || String(error),
+      code: error?.code,
+      envCheck: {
+        hasEmail: !!process.env.MAILBUX_EMAIL,
+        hasPassword: !!process.env.MAILBUX_PASSWORD,
+      },
+    });
   }
 }
