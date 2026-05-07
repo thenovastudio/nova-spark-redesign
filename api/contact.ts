@@ -1,16 +1,6 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
 import nodemailer from "nodemailer";
 
-const transporter = nodemailer.createTransport({
-  host: "my.mailbux.com",
-  port: 587,
-  secure: false, // STARTTLS
-  auth: {
-    user: process.env.MAILBUX_EMAIL,    // e.g. contact@codevio.be
-    pass: process.env.MAILBUX_PASSWORD, // your Mailbux password
-  },
-});
-
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   // Only allow POST
   if (req.method !== "POST") {
@@ -24,9 +14,23 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     return res.status(400).json({ error: "Name, email and message are required." });
   }
 
+  const smtpUser = process.env.MAILBUX_EMAIL;
+  const smtpPass = process.env.MAILBUX_PASSWORD;
+
+  // Create transporter inside the handler so env vars are fresh
+  const transporter = nodemailer.createTransport({
+    host: "my.mailbux.com",
+    port: 465,
+    secure: true, // SSL/TLS on port 465
+    auth: {
+      user: smtpUser,
+      pass: smtpPass,
+    },
+  });
+
   try {
     await transporter.sendMail({
-      from: `"Codevio Website" <${process.env.MAILBUX_EMAIL}>`,
+      from: `"Codevio Website" <${smtpUser}>`,
       to: "contact@codevio.be",
       replyTo: email,
       subject: `Nieuw contactformulier: ${name}${company ? ` (${company})` : ""}`,
@@ -74,8 +78,10 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       details: error?.message || String(error),
       code: error?.code,
       envCheck: {
-        hasEmail: !!process.env.MAILBUX_EMAIL,
-        hasPassword: !!process.env.MAILBUX_PASSWORD,
+        hasEmail: !!smtpUser,
+        hasPassword: !!smtpPass,
+        emailUsed: smtpUser ? smtpUser.substring(0, 3) + "***" : "NOT SET",
+        passLength: smtpPass ? smtpPass.length : 0,
       },
     });
   }
