@@ -1,5 +1,4 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" fill="none">
-  <rect width="800" height="600" fill="#0c0c0c"/>
   <!-- Email client frame -->
   <rect x="80" y="60" width="640" height="480" rx="16" fill="#141414" stroke="#2a2a2a" stroke-width="1.5"/>
   <!-- Top bar -->
@@ -56,25 +55,21 @@
   <text x="660" y="192" fill="#555" font-family="system-ui" font-size="10" text-anchor="end">10:32</text>
   
   <rect x="236" y="233" width="468" height="1" fill="#1e1e1e"/>
-  <rect x="236" y="234" width="468" height="64" fill="transparent"/>
   <rect x="276" y="250" width="80" height="10" rx="3" fill="#ccc"/>
   <rect x="276" y="266" width="180" height="8" rx="3" fill="#555"/>
   <text x="660" y="260" fill="#555" font-family="system-ui" font-size="10" text-anchor="end">09:15</text>
   
   <rect x="236" y="299" width="468" height="1" fill="#1e1e1e"/>
-  <rect x="236" y="300" width="468" height="64" fill="transparent"/>
   <rect x="276" y="316" width="90" height="10" rx="3" fill="#ccc"/>
   <rect x="276" y="332" width="160" height="8" rx="3" fill="#555"/>
   <text x="660" y="326" fill="#555" font-family="system-ui" font-size="10" text-anchor="end">Yesterday</text>
   
   <rect x="236" y="365" width="468" height="1" fill="#1e1e1e"/>
-  <rect x="236" y="366" width="468" height="64" fill="transparent"/>
   <rect x="276" y="382" width="110" height="10" rx="3" fill="#ccc"/>
   <rect x="276" y="398" width="190" height="8" rx="3" fill="#555"/>
   <text x="660" y="392" fill="#555" font-family="system-ui" font-size="10" text-anchor="end">May 6</text>
   
   <rect x="236" y="431" width="468" height="1" fill="#1e1e1e"/>
-  <rect x="236" y="432" width="468" height="64" fill="transparent"/>
   <rect x="276" y="448" width="70" height="10" rx="3" fill="#ccc"/>
   <rect x="276" y="464" width="170" height="8" rx="3" fill="#555"/>
   <text x="660" y="458" fill="#555" font-family="system-ui" font-size="10" text-anchor="end">May 5</text>
