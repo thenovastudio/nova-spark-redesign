@@ -1,12 +1,35 @@
+import { useEffect, useMemo, useState } from "react";
+import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { FlowHoverButton } from "@/components/ui/flow-hover-button";
 import { ArrowRight } from "lucide-react";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
 import { translations } from "@/lib/i18n/translations";
 
+const ROTATING_WORDS: Record<string, string[]> = {
+  nl: ["laten groeien", "onderscheiden", "versterken", "laten opvallen", "transformeren"],
+  en: ["your business", "your brand", "your growth", "your presence", "your vision"],
+  fr: ["votre entreprise", "votre marque", "votre croissance", "votre présence", "votre vision"],
+};
+
 export function HeroSection() {
   const { language } = useLanguage();
   const t = translations.hero;
+
+  const titles = useMemo(() => ROTATING_WORDS[language] || ROTATING_WORDS.en, [language]);
+  const [titleIndex, setTitleIndex] = useState(0);
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setTitleIndex((prev) => (prev + 1) % titles.length);
+    }, 2500);
+    return () => clearTimeout(timeout);
+  }, [titleIndex, titles]);
+
+  // Reset index when language changes
+  useEffect(() => {
+    setTitleIndex(0);
+  }, [language]);
 
   return (
     <section className="relative min-h-[90vh] flex items-end pb-20 md:pb-28 pt-32 md:pt-40 overflow-hidden">
@@ -21,10 +44,27 @@ export function HeroSection() {
             {language === "nl" ? "Webdesign Studio — België" : language === "fr" ? "Studio Web — Belgique" : "Web Design Studio — Belgium"}
           </p>
 
-          {/* Headline */}
+          {/* Headline with animated rotating word */}
           <h1 className="text-5xl md:text-7xl lg:text-[5.5rem] font-bold tracking-tight leading-[0.95] mb-8 text-secondary">
             {t.title1[language]}{" "}
-            <span className="text-primary">{t.titleHighlight[language]}</span>
+            <span className="relative flex w-full overflow-hidden md:pb-4 md:pt-1">
+              &nbsp;
+              {titles.map((title, index) => (
+                <motion.span
+                  key={`${language}-${index}`}
+                  className="absolute text-primary font-bold"
+                  initial={{ opacity: 0, y: 40 }}
+                  animate={
+                    titleIndex === index
+                      ? { y: 0, opacity: 1 }
+                      : { y: titleIndex > index ? -60 : 60, opacity: 0 }
+                  }
+                  transition={{ type: "spring", stiffness: 80, damping: 16 }}
+                >
+                  {title}
+                </motion.span>
+              ))}
+            </span>
           </h1>
 
           {/* Subtitle */}
