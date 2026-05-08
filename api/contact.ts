@@ -1,5 +1,5 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
-import nodemailer from "nodemailer";
+import { Resend } from "resend";
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   // CORS headers
@@ -11,47 +11,27 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     return res.status(200).end();
   }
 
-  // Only allow POST
   if (req.method !== "POST") {
     return res.status(405).json({ error: "Method not allowed" });
   }
 
   const { name, email, company, message } = req.body;
 
-  // Basic validation
   if (!name || !email || !message) {
     return res.status(400).json({ error: "Name, email and message are required." });
   }
 
-  const smtpUser = process.env.MAILBUX_EMAIL;
-  const smtpPass = process.env.MAILBUX_PASSWORD;
-
-  if (!smtpUser || !smtpPass) {
-    return res.status(500).json({ error: "Email configuration missing" });
+  const apiKey = process.env.RESEND_API_KEY;
+  if (!apiKey) {
+    return res.status(500).json({ error: "Email service not configured" });
   }
 
-  // Create transporter with Mailbux SMTP settings
-  const transporter = nodemailer.createTransport({
-    host: "my.mailbux.com",
-    port: 587,
-    secure: false,
-    auth: {
-      user: smtpUser,
-      pass: smtpPass,
-    },
-    tls: {
-      // Do not fail on invalid certs
-      rejectUnauthorized: false,
-    },
-  });
+  const resend = new Resend(apiKey);
 
   try {
-    // Verify the connection first
-    await transporter.verify();
-
-    await transporter.sendMail({
-      from: `"Codevio Website" <${smtpUser}>`,
-      to: "contact@codevio.be",
+    await resend.emails.send({
+      from: "Codevio Website <noreply@codevio.be>",
+      to: ["contact@codevio.be"],
       replyTo: email,
       subject: `Nieuw contactformulier: ${name}${company ? ` (${company})` : ""}`,
       html: `
