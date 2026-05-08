@@ -76,8 +76,8 @@ const Contact = () => {
     } catch (err) {
       console.error("Contact form submission error:", err);
       toast({
-        title: "Error",
-        description: "Something went wrong. Please try again.",
+        title: t.toast.errorTitle[language],
+        description: t.toast.errorDesc[language],
         variant: "destructive",
       });
     } finally {

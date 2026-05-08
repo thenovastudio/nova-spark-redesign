@@ -2,6 +2,15 @@ import type { VercelRequest, VercelResponse } from "@vercel/node";
 import nodemailer from "nodemailer";
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
+  // CORS headers
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+
+  if (req.method === "OPTIONS") {
+    return res.status(200).end();
+  }
+
   // Only allow POST
   if (req.method !== "POST") {
     return res.status(405).json({ error: "Method not allowed" });
@@ -17,18 +26,29 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   const smtpUser = process.env.MAILBUX_EMAIL;
   const smtpPass = process.env.MAILBUX_PASSWORD;
 
-  // Create transporter inside the handler so env vars are fresh
+  if (!smtpUser || !smtpPass) {
+    return res.status(500).json({ error: "Email configuration missing" });
+  }
+
+  // Create transporter with Mailbux SMTP settings
   const transporter = nodemailer.createTransport({
     host: "my.mailbux.com",
-    port: 465,
-    secure: true, // SSL/TLS on port 465
+    port: 587,
+    secure: false,
     auth: {
       user: smtpUser,
       pass: smtpPass,
     },
+    tls: {
+      // Do not fail on invalid certs
+      rejectUnauthorized: false,
+    },
   });
 
   try {
+    // Verify the connection first
+    await transporter.verify();
+
     await transporter.sendMail({
       from: `"Codevio Website" <${smtpUser}>`,
       to: "contact@codevio.be",
@@ -76,13 +96,6 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     return res.status(500).json({
       error: "Failed to send email",
       details: error?.message || String(error),
-      code: error?.code,
-      envCheck: {
-        hasEmail: !!smtpUser,
-        hasPassword: !!smtpPass,
-        emailUsed: smtpUser ? smtpUser.substring(0, 3) + "***" : "NOT SET",
-        passLength: smtpPass ? smtpPass.length : 0,
-      },
     });
   }
 }
