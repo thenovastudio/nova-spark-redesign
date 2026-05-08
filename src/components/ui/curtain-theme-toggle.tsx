@@ -7,29 +7,27 @@ import {
   useEffect,
   type CSSProperties,
 } from "react";
+import { createPortal } from "react-dom";
+import { useTheme } from "@/components/ThemeProvider";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
 export type CurtainTheme = "light" | "dark";
 
 export interface CurtainThemeToggleProps {
-  /** Starting theme. Default: detected from DOM */
-  defaultTheme?: CurtainTheme;
   /** Diameter of the icon button in px. Default: 36 */
   buttonSize?: number;
   /** Curtain animation duration in ms. Default: 550 */
   duration?: number;
-  /** Called after each theme change completes */
-  onThemeChange?: (theme: CurtainTheme) => void;
   /** Additional class names for the button */
   className?: string;
 }
 
-// ─── Curtain colors ───────────────────────────────────────────────────────────
+// ─── Curtain colors (match CSS vars) ──────────────────────────────────────────
 
 const CURTAIN_COLORS: Record<CurtainTheme, string> = {
-  light: "hsl(0, 0%, 100%)",      // light bg
-  dark: "hsl(217, 32%, 10%)",     // dark bg
+  light: "hsl(0, 0%, 100%)",
+  dark: "hsl(217, 32%, 10%)",
 };
 
 // ─── Icons ────────────────────────────────────────────────────────────────────
@@ -80,60 +78,34 @@ type CurtainPhase = "idle" | "falling" | "rising";
 const EASING = "cubic-bezier(0.76, 0, 0.24, 1)";
 
 export function CurtainThemeToggle({
-  defaultTheme,
   buttonSize = 36,
   duration = 550,
-  onThemeChange,
   className,
 }: CurtainThemeToggleProps) {
-  // Detect initial theme from DOM
-  const getInitialTheme = (): CurtainTheme => {
-    if (defaultTheme) return defaultTheme;
-    if (typeof document !== "undefined") {
-      return document.documentElement.classList.contains("dark") ? "dark" : "light";
-    }
-    return "light";
-  };
-
-  const [theme, setTheme] = useState<CurtainTheme>(getInitialTheme);
+  const { resolvedTheme, setTheme } = useTheme();
   const [phase, setPhase] = useState<CurtainPhase>("idle");
   const [hovered, setHovered] = useState(false);
   const [pressed, setPressed] = useState(false);
   const curtainColorRef = useRef<string>("");
+  const [mounted, setMounted] = useState(false);
 
-  // Sync with external theme changes (e.g. ThemeProvider)
   useEffect(() => {
-    if (typeof document === "undefined") return;
-    const observer = new MutationObserver(() => {
-      const isDark = document.documentElement.classList.contains("dark");
-      setTheme(isDark ? "dark" : "light");
-    });
-    observer.observe(document.documentElement, { attributes: true, attributeFilter: ["class"] });
-    return () => observer.disconnect();
+    setMounted(true);
   }, []);
 
   const toggle = useCallback(() => {
     if (phase !== "idle") return;
-    const next: CurtainTheme = theme === "light" ? "dark" : "light";
+    const next: CurtainTheme = resolvedTheme === "light" ? "dark" : "light";
     curtainColorRef.current = CURTAIN_COLORS[next];
     setPhase("falling");
 
+    // At the midpoint (curtain fully covers screen), switch theme
     setTimeout(() => {
       setTheme(next);
-
-      // Apply to DOM
-      if (typeof document !== "undefined") {
-        const root = document.documentElement;
-        root.classList.remove("light", "dark");
-        root.classList.add(next);
-        try { localStorage.setItem("nova-theme", next); } catch { /* */ }
-      }
-
-      onThemeChange?.(next);
       setPhase("rising");
       setTimeout(() => setPhase("idle"), duration + 60);
     }, duration);
-  }, [phase, theme, duration, onThemeChange]);
+  }, [phase, resolvedTheme, duration, setTheme]);
 
   // ── Styles ────────────────────────────────────────────────────────────────
 
@@ -149,7 +121,6 @@ export function CurtainThemeToggle({
     justifyContent: "center",
     background: "hsl(var(--muted))",
     color: "hsl(var(--foreground))",
-    zIndex: 9999,
     outline: "none",
     transform: `scale(${btnScale})`,
     transition: "background 0.3s ease, color 0.3s ease, transform 0.15s ease, border-color 0.3s ease",
@@ -158,18 +129,29 @@ export function CurtainThemeToggle({
 
   const curtainStyle: CSSProperties = {
     position: "fixed",
-    inset: 0,
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
     background: curtainColorRef.current,
     transformOrigin: "top",
     transform: phase === "falling" ? "scaleY(1)" : "scaleY(0)",
     transition: phase !== "idle" ? `transform ${duration}ms ${EASING}` : "none",
-    zIndex: 99997,
+    zIndex: 99999,
     pointerEvents: "none",
   };
 
+  // Render the curtain via portal so it's above everything (navbar, modals, etc.)
+  const curtainPortal = mounted
+    ? createPortal(
+        <div aria-hidden="true" style={curtainStyle} />,
+        document.body
+      )
+    : null;
+
   return (
     <>
-      <div aria-hidden="true" style={curtainStyle} />
+      {curtainPortal}
       <button
         style={btnStyle}
         className={className}
@@ -178,10 +160,10 @@ export function CurtainThemeToggle({
         onMouseLeave={() => { setHovered(false); setPressed(false); }}
         onMouseDown={() => setPressed(true)}
         onMouseUp={() => setPressed(false)}
-        aria-label={theme === "light" ? "Switch to dark mode" : "Switch to light mode"}
-        aria-pressed={theme === "dark"}
+        aria-label={resolvedTheme === "light" ? "Switch to dark mode" : "Switch to light mode"}
+        aria-pressed={resolvedTheme === "dark"}
       >
-        {theme === "light" ? <MoonIcon /> : <SunIcon />}
+        {resolvedTheme === "light" ? <MoonIcon /> : <SunIcon />}
       </button>
     </>
   );
