@@ -3,7 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { FlowHoverButton } from "@/components/ui/flow-hover-button";
 import { Menu, X } from "lucide-react";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
-import { ThemeDropdown } from "@/components/ThemeDropdown";
+import { CurtainThemeToggle } from "@/components/ui/curtain-theme-toggle";
 import { LanguageDropdown } from "@/components/LanguageDropdown";
 import { translations } from "@/lib/i18n/translations";
 import codevioLogo from "@/components/codevio-logo.png";
@@ -81,7 +81,7 @@ export function Navbar() {
                 </div>
 
                 <div className="hidden lg:flex items-center gap-3">
-                    <ThemeDropdown />
+                    <CurtainThemeToggle buttonSize={34} duration={600} />
                     <LanguageDropdown />
                     <FlowHoverButton asChild size="default" variant="default">
                         <Link to="/contact">{t.startProject[language]}</Link>
@@ -123,7 +123,7 @@ export function Navbar() {
 
                         <div className="border-t border-border/30 pt-6 space-y-4">
                             <div className="flex gap-3">
-                                <ThemeDropdown />
+                                <CurtainThemeToggle buttonSize={34} duration={600} />
                                 <LanguageDropdown />
                             </div>
                             <FlowHoverButton asChild size="lg" variant="default" className="w-full">
