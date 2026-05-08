@@ -145,12 +145,12 @@ const getStructuredData = (page: string, language: string) => {
     logo: `${baseUrl}/favicon.png`,
     image: `${baseUrl}/og-image.png`,
     telephone: "+32 XXX XX XX XX",
-    email: "webdevelopment@codevio.be",
+    email: "contact@codevio.be",
     contactPoint: {
       "@type": "ContactPoint",
       contactType: "Customer Support",
       telephone: "+32 XXX XX XX XX",
-      email: "webdevelopment@codevio.be",
+      email: "contact@codevio.be",
       areaServed: "BE",
     },
     address: {
@@ -182,7 +182,7 @@ const getStructuredData = (page: string, language: string) => {
     logo: `${baseUrl}/favicon.png`,
     image: `${baseUrl}/og-image.png`,
     telephone: "+32 XXX XX XX XX",
-    email: "webdevelopment@codevio.be",
+    email: "contact@codevio.be",
     address: {
       "@type": "PostalAddress",
       addressCountry: "BE",
