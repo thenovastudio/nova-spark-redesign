@@ -7,6 +7,8 @@ import { SEOHead } from "@/components/SEOHead";
 
 const projects = [
   { id: "nova-studio", year: "2024", color: "bg-primary/10", image: "website-building.svg" },
+  { id: "codeviobox", year: "2025", color: "bg-amber-600/10", image: "/codeviobox.svg" },
+  { id: "novail", year: "2025", color: "bg-violet-500/10", image: "/novail.svg" },
   { id: "powerplan-app", year: "2025", color: "bg-emerald-500/10", image: "/powerplan.svg" },
   { id: "sleepreset-app", year: "2023", color: "bg-amber-500/10", image: "/sleepreset.svg" },
   { id: "advanced-notes", year: "2023", color: "bg-slate-500/10", image: "/advanced-notes.svg" },
@@ -18,10 +20,12 @@ const Work = () => {
   const p = translations.portfolio.projects;
 
   const projectData = [
-    { ...projects[0], title: p.novaStudio.title[language], category: t.projects.novaStudio ? "Web Design & Development" : "Web Design & Development", problem: t.projects.novaStudio.problem[language], solution: t.projects.novaStudio.solution[language], value: t.projects.novaStudio.value[language] },
-    { ...projects[1], title: p.powerPlan.title[language], category: p.powerPlan.category[language], problem: t.projects.powerPlan.problem[language], solution: t.projects.powerPlan.solution[language], value: t.projects.powerPlan.value[language] },
-    { ...projects[2], title: p.sleepReset.title[language], category: p.sleepReset.category[language], problem: t.projects.sleepReset.problem[language], solution: t.projects.sleepReset.solution[language], value: t.projects.sleepReset.value[language] },
-    { ...projects[3], title: t.projects.advancedNotes.title[language], category: t.projects.advancedNotes.category[language], problem: t.projects.advancedNotes.problem[language], solution: t.projects.advancedNotes.solution[language], value: t.projects.advancedNotes.value[language] },
+    { ...projects[0], title: p.novaStudio.title[language], category: "Web Design & Development", problem: t.projects.novaStudio.problem[language], solution: t.projects.novaStudio.solution[language], value: t.projects.novaStudio.value[language] },
+    { ...projects[1], title: p.codevioBox.title[language], category: p.codevioBox.category[language], problem: t.projects.codevioBox.problem[language], solution: t.projects.codevioBox.solution[language], value: t.projects.codevioBox.value[language] },
+    { ...projects[2], title: p.novail.title[language], category: p.novail.category[language], problem: t.projects.novail.problem[language], solution: t.projects.novail.solution[language], value: t.projects.novail.value[language] },
+    { ...projects[3], title: p.powerPlan.title[language], category: p.powerPlan.category[language], problem: t.projects.powerPlan.problem[language], solution: t.projects.powerPlan.solution[language], value: t.projects.powerPlan.value[language] },
+    { ...projects[4], title: p.sleepReset.title[language], category: p.sleepReset.category[language], problem: t.projects.sleepReset.problem[language], solution: t.projects.sleepReset.solution[language], value: t.projects.sleepReset.value[language] },
+    { ...projects[5], title: t.projects.advancedNotes.title[language], category: t.projects.advancedNotes.category[language], problem: t.projects.advancedNotes.problem[language], solution: t.projects.advancedNotes.solution[language], value: t.projects.advancedNotes.value[language] },
   ];
 
   return (

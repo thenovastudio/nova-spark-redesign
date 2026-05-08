@@ -16,18 +16,18 @@ export function PortfolioPreview() {
       image: "/website-building.svg",
     },
     {
-      id: "powerplan-app",
-      title: t.projects.powerPlan.title[language],
-      category: t.projects.powerPlan.category[language],
-      description: t.projects.powerPlan.description[language],
-      image: "/powerplan.svg",
+      id: "codeviobox",
+      title: t.projects.codevioBox.title[language],
+      category: t.projects.codevioBox.category[language],
+      description: t.projects.codevioBox.description[language],
+      image: "/codeviobox.svg",
     },
     {
-      id: "sleepreset-app",
-      title: t.projects.sleepReset.title[language],
-      category: t.projects.sleepReset.category[language],
-      description: t.projects.sleepReset.description[language],
-      image: "/sleepreset.svg",
+      id: "novail",
+      title: t.projects.novail.title[language],
+      category: t.projects.novail.category[language],
+      description: t.projects.novail.description[language],
+      image: "/novail.svg",
     },
   ];
 

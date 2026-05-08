@@ -159,6 +159,24 @@ export const translations = {
                     fr: "Une application de sommeil simple qui aide les utilisateurs à retrouver structure et cohérence dans leur routine.",
                 },
             },
+            codevioBox: {
+                title: { nl: "CodevioBox", en: "CodevioBox", fr: "CodevioBox" },
+                category: { nl: "Intern Dashboard", en: "Internal Dashboard", fr: "Tableau de Bord Interne" },
+                description: {
+                    nl: "Ons eigen intern inbox- en dashboardsysteem voor het beheren van klantberichten en projectaanvragen.",
+                    en: "Our own internal inbox and dashboard system for managing client messages and project inquiries.",
+                    fr: "Notre propre système interne de boîte de réception et tableau de bord pour gérer les messages clients et les demandes de projets.",
+                },
+            },
+            novail: {
+                title: { nl: "Novail", en: "Novail", fr: "Novail" },
+                category: { nl: "Email Client", en: "Email Client", fr: "Client Email" },
+                description: {
+                    nl: "Een prachtige, volledig personaliseerbare email client met een intuïtieve interface die e-mail weer leuk maakt.",
+                    en: "A beautiful, fully customizable email client with an intuitive interface that makes email enjoyable again.",
+                    fr: "Un client email magnifique et entièrement personnalisable avec une interface intuitive qui rend l'email agréable.",
+                },
+            },
         },
     },
 
@@ -266,6 +284,44 @@ export const translations = {
                     nl: "Gebruikers kunnen complexe informatie effectiever beheren, cognitieve overbelasting verminderen en belangrijke notities sneller vinden.",
                     en: "Users can manage complex information more effectively, reduce cognitive overload, and find important notes faster, resulting in better productivity and long-term usability.",
                     fr: "Les utilisateurs peuvent gérer l'information complexe plus efficacement, réduire la surcharge cognitive et trouver les notes importantes plus rapidement.",
+                },
+            },
+            codevioBox: {
+                title: { nl: "CodevioBox", en: "CodevioBox", fr: "CodevioBox" },
+                category: { nl: "Intern Dashboard", en: "Internal Dashboard", fr: "Tableau de Bord Interne" },
+                problem: {
+                    nl: "Het beheren van klantberichten via losse e-mails en verschillende platforms leidde tot gemiste aanvragen, trage opvolging en gebrek aan overzicht.",
+                    en: "Managing client messages across scattered emails and multiple platforms led to missed inquiries, slow follow-ups, and a lack of centralized oversight.",
+                    fr: "La gestion des messages clients via des emails dispersés et différentes plateformes entraînait des demandes manquées et un manque de suivi.",
+                },
+                solution: {
+                    nl: "CodevioBox centraliseert alle klantcommunicatie in één strak dashboard met inbox, archief en directe antwoordmogelijkheden — gebouwd op maat voor onze workflow.",
+                    en: "CodevioBox centralizes all client communication into a single, clean dashboard with inbox, archive, and direct reply capabilities — custom-built for our workflow.",
+                    fr: "CodevioBox centralise toute la communication client dans un tableau de bord unique avec boîte de réception, archives et réponses directes — construit sur mesure.",
+                },
+                value: {
+                    nl: "Snellere reactietijden, geen gemiste berichten meer, en volledig overzicht over alle klantinteracties op één plek.",
+                    en: "Faster response times, zero missed messages, and complete visibility over all client interactions in one place.",
+                    fr: "Temps de réponse plus rapides, aucun message manqué et visibilité complète sur toutes les interactions clients.",
+                },
+            },
+            novail: {
+                title: { nl: "Novail", en: "Novail", fr: "Novail" },
+                category: { nl: "Email Client", en: "Email Client", fr: "Client Email" },
+                problem: {
+                    nl: "Bestaande email clients zijn overweldigend, visueel verouderd en bieden weinig mogelijkheden tot personalisatie — waardoor e-mail aanvoelt als een corvee.",
+                    en: "Existing email clients are overwhelming, visually outdated, and offer little room for personalization — making email feel like a chore rather than a tool.",
+                    fr: "Les clients email existants sont submergés, visuellement obsolètes et offrent peu de possibilités de personnalisation — rendant l'email fastidieux.",
+                },
+                solution: {
+                    nl: "Novail biedt een prachtige, volledig personaliseerbare email-ervaring met een intuïtieve interface, custom thema's, labels en een slimme inbox die zich aanpast aan jouw workflow.",
+                    en: "Novail offers a beautiful, fully customizable email experience with an intuitive interface, custom themes, labels, and a smart inbox that adapts to your workflow.",
+                    fr: "Novail offre une expérience email magnifique et entièrement personnalisable avec une interface intuitive, des thèmes personnalisés et une boîte de réception intelligente.",
+                },
+                value: {
+                    nl: "E-mail wordt weer overzichtelijk en aangenaam. Gebruikers hebben volledige controle over hun inbox-ervaring zonder complexiteit.",
+                    en: "Email becomes clear and enjoyable again. Users have complete control over their inbox experience without unnecessary complexity.",
+                    fr: "L'email redevient clair et agréable. Les utilisateurs ont un contrôle total sur leur expérience sans complexité inutile.",
                 },
             },
         },
