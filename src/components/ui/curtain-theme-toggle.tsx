@@ -130,21 +130,21 @@ export function CurtainThemeToggle({
 
   // ── Styles ────────────────────────────────────────────────────────────────
 
-  const btnScale = pressed ? 0.92 : hovered ? 1.08 : 1;
+  const btnScale = pressed ? 0.96 : hovered ? 1.04 : 1;
   const btnStyle: CSSProperties = {
     width: buttonSize,
     height: buttonSize,
-    borderRadius: "50%",
-    border: "1px solid hsl(var(--border))",
+    borderRadius: "0.5rem",
+    border: "none",
     cursor: animating ? "default" : "pointer",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    background: "hsl(var(--muted))",
-    color: "hsl(var(--foreground))",
+    background: "transparent",
+    color: "hsl(var(--muted-foreground))",
     outline: "none",
     transform: `scale(${btnScale})`,
-    transition: "transform 0.15s ease",
+    transition: "transform 0.15s ease, color 0.2s ease, background 0.2s ease",
     flexShrink: 0,
   };
 

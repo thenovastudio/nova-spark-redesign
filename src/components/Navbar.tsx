@@ -81,8 +81,11 @@ export function Navbar() {
                 </div>
 
                 <div className="hidden lg:flex items-center gap-3">
-                    <CurtainThemeToggle buttonSize={34} duration={600} />
-                    <LanguageDropdown />
+                    <div className="flex items-center border border-border/50 rounded-lg overflow-hidden">
+                        <CurtainThemeToggle buttonSize={34} duration={600} />
+                        <div className="w-px h-5 bg-border/50" />
+                        <LanguageDropdown />
+                    </div>
                     <FlowHoverButton asChild size="default" variant="default">
                         <Link to="/contact">{t.startProject[language]}</Link>
                     </FlowHoverButton>
@@ -122,8 +125,9 @@ export function Navbar() {
                         </div>
 
                         <div className="border-t border-border/30 pt-6 space-y-4">
-                            <div className="flex gap-3">
+                            <div className="flex items-center border border-border/50 rounded-lg overflow-hidden w-fit">
                                 <CurtainThemeToggle buttonSize={34} duration={600} />
+                                <div className="w-px h-5 bg-border/50" />
                                 <LanguageDropdown />
                             </div>
                             <FlowHoverButton asChild size="lg" variant="default" className="w-full">
