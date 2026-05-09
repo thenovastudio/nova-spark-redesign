@@ -79,6 +79,13 @@ export function TestimonialsSection() {
 
   const t = testimonials[activeIndex][language as keyof typeof testimonials[0]]
 
+  const highlightCodevio = (text: string) => {
+    const parts = text.split(/(Codevio)/g)
+    return parts.map((part, i) =>
+      part === 'Codevio' ? <span key={i} className="text-primary">{part}</span> : part
+    )
+  }
+
   return (
     <section className="section-padding bg-background/50 border-y border-border">
       <div className="container">
@@ -102,7 +109,7 @@ export function TestimonialsSection() {
             </div>
 
             <blockquote className="text-2xl font-semibold text-foreground mb-6 leading-relaxed">
-              "{t.text}"
+              "{highlightCodevio(t.text)}"
             </blockquote>
 
             <div className="flex items-center justify-between">

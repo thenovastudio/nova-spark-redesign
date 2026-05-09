@@ -86,7 +86,7 @@ export function Footer() {
 
         <div className="mt-12 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-xs text-muted-foreground">
-            © {new Date().getFullYear()} Codevio. {t.rights[language]}
+            © {new Date().getFullYear()} <span className="text-primary">Codevio</span>. {t.rights[language]}
           </p>
           <p className="text-xs text-muted-foreground">
             {t.basedIn[language]}

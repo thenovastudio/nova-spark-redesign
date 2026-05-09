@@ -19,13 +19,20 @@ const Why = () => {
     { icon: Users, value: "100%", label: t.stats.pricing[language] },
   ];
 
+  const highlightCodevio = (text: string) => {
+    const parts = text.split(/(Codevio)/g);
+    return parts.map((part, i) =>
+      part === "Codevio" ? <span key={i} className="text-primary">{part}</span> : part
+    );
+  };
+
   return (
     <main className="min-h-screen">
       <SEOHead page="why" />
       <Navbar />
       <section className="pt-32 pb-16 md:pt-40 md:pb-20 border-b border-border">
         <div className="container"><div className="max-w-3xl border-l-4 border-primary pl-6">
-          <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-secondary">{t.title[language]}</h1>
+          <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-secondary">{highlightCodevio(t.title[language])}</h1>
           <p className="mt-6 text-xl text-muted-foreground">{t.subtitle[language]}</p>
         </div></div>
       </section>
