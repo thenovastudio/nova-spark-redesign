@@ -81,7 +81,7 @@ export function Navbar() {
                 </div>
 
                 <div className="hidden lg:flex items-center gap-3">
-                    <div className="flex items-center border border-border/50 rounded-lg overflow-hidden">
+                    <div className="flex items-center border border-border/50 rounded-lg">
                         <CurtainThemeToggle buttonSize={34} duration={600} />
                         <div className="w-px h-5 bg-border/50" />
                         <LanguageDropdown />
@@ -125,7 +125,7 @@ export function Navbar() {
                         </div>
 
                         <div className="border-t border-border/30 pt-6 space-y-4">
-                            <div className="flex items-center border border-border/50 rounded-lg overflow-hidden w-fit">
+                            <div className="flex items-center border border-border/50 rounded-lg w-fit">
                                 <CurtainThemeToggle buttonSize={34} duration={600} />
                                 <div className="w-px h-5 bg-border/50" />
                                 <LanguageDropdown />
