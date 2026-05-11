@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { FlowHoverButton } from "@/components/ui/flow-hover-button";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ArrowRight } from "lucide-react";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
 import { CurtainThemeToggle } from "@/components/ui/curtain-theme-toggle";
 import { LanguageDropdown } from "@/components/LanguageDropdown";
@@ -49,6 +49,16 @@ export function Navbar() {
         setIsMobileMenuOpen(false);
     }, [location]);
 
+    // Lock body scroll when mobile menu is open
+    useEffect(() => {
+        if (isMobileMenuOpen) {
+            document.body.style.overflow = "hidden";
+        } else {
+            document.body.style.overflow = "";
+        }
+        return () => { document.body.style.overflow = ""; };
+    }, [isMobileMenuOpen]);
+
     return (
         <header
             className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
@@ -57,7 +67,7 @@ export function Navbar() {
                 }`}
         >
             <nav className="container flex items-center justify-between">
-                <Link to="/" className="hover:opacity-70 transition-opacity">
+                <Link to="/" className="hover:opacity-70 transition-opacity relative z-[60]">
                     <img src={isDark ? codevioLogoDark : codevioLogo} alt="Codevio" className="h-10 w-auto" />
                 </Link>
 
@@ -90,50 +100,88 @@ export function Navbar() {
 
                 {/* Mobile Menu Button */}
                 <button
-                    className="lg:hidden p-2 text-foreground hover:text-primary transition-colors"
+                    className="lg:hidden relative z-[60] w-10 h-10 flex items-center justify-center rounded-lg hover:bg-muted/50 transition-colors"
                     onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                     aria-label="Toggle menu"
                 >
-                    {isMobileMenuOpen ? (
-                        <X className="h-6 w-6" />
-                    ) : (
-                        <Menu className="h-6 w-6" />
-                    )}
+                    <div className="relative w-5 h-4">
+                        <span className={`absolute left-0 w-full h-[2px] bg-foreground rounded-full transition-all duration-300 ${isMobileMenuOpen ? "top-[7px] rotate-45" : "top-0"}`} />
+                        <span className={`absolute left-0 w-full h-[2px] bg-foreground rounded-full transition-all duration-300 top-[7px] ${isMobileMenuOpen ? "opacity-0 scale-x-0" : "opacity-100"}`} />
+                        <span className={`absolute left-0 w-full h-[2px] bg-foreground rounded-full transition-all duration-300 ${isMobileMenuOpen ? "top-[7px] -rotate-45" : "top-[14px]"}`} />
+                    </div>
                 </button>
             </nav>
 
-            {/* Mobile Menu */}
-            {isMobileMenuOpen && (
-                <div className="lg:hidden absolute top-full left-0 right-0 bg-background/95 backdrop-blur-lg border-b border-border/30">
-                    <div className="container py-6 space-y-6">
-                        <div className="flex flex-col gap-4">
-                            {navLinks.map((link) => (
-                                <Link
-                                    key={link.href}
-                                    to={link.href}
-                                    className={`text-base font-medium py-2 transition-colors ${location.pathname === link.href
-                                        ? "text-primary"
-                                        : "text-muted-foreground hover:text-foreground"
-                                        }`}
-                                >
+            {/* ── Mobile Menu: Fullscreen Overlay ──────────────────── */}
+            <div
+                className={`lg:hidden fixed inset-0 bg-background/98 backdrop-blur-xl z-50 transition-all duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] ${
+                    isMobileMenuOpen
+                        ? "opacity-100 pointer-events-auto"
+                        : "opacity-0 pointer-events-none"
+                }`}
+            >
+                <div className="flex flex-col justify-between h-full pt-24 pb-8 px-6">
+                    {/* Links */}
+                    <div className="flex flex-col gap-1">
+                        {navLinks.map((link, i) => (
+                            <Link
+                                key={link.href}
+                                to={link.href}
+                                className={`group flex items-center gap-4 py-3 px-4 rounded-xl transition-all duration-300 ${
+                                    location.pathname === link.href
+                                        ? "bg-primary text-primary-foreground"
+                                        : "text-foreground hover:bg-muted/50"
+                                }`}
+                                style={{
+                                    transform: isMobileMenuOpen ? "translateX(0)" : "translateX(-30px)",
+                                    opacity: isMobileMenuOpen ? 1 : 0,
+                                    transition: `transform 0.4s cubic-bezier(0.76, 0, 0.24, 1) ${i * 60 + 100}ms, opacity 0.4s ease ${i * 60 + 100}ms`,
+                                }}
+                            >
+                                <span className={`text-xs font-bold tabular-nums w-6 ${
+                                    location.pathname === link.href ? "text-primary-foreground/50" : "text-primary/50"
+                                }`}>
+                                    {String(i + 1).padStart(2, "0")}
+                                </span>
+                                <span className="text-xl font-semibold tracking-tight">
                                     {link.label}
-                                </Link>
-                            ))}
-                        </div>
+                                </span>
+                                {location.pathname === link.href && (
+                                    <ArrowRight className="h-4 w-4 ml-auto opacity-60" />
+                                )}
+                            </Link>
+                        ))}
+                    </div>
 
-                        <div className="border-t border-border/30 pt-6 space-y-4">
-                            <div className="flex items-center border border-border/50 rounded-lg w-fit">
-                                <CurtainThemeToggle buttonSize={34} duration={600} />
+                    {/* Bottom section */}
+                    <div
+                        className="space-y-5"
+                        style={{
+                            transform: isMobileMenuOpen ? "translateY(0)" : "translateY(20px)",
+                            opacity: isMobileMenuOpen ? 1 : 0,
+                            transition: "transform 0.5s cubic-bezier(0.76, 0, 0.24, 1) 0.35s, opacity 0.5s ease 0.35s",
+                        }}
+                    >
+                        <div className="border-t border-border/30 pt-5 flex items-center justify-between">
+                            <div className="flex items-center border border-border/50 rounded-lg">
+                                <CurtainThemeToggle buttonSize={38} duration={600} />
                                 <div className="w-px h-5 bg-border/50" />
                                 <LanguageDropdown />
                             </div>
-                            <FlowHoverButton asChild size="lg" variant="default" className="w-full">
-                                <Link to="/contact">{t.startProject[language]}</Link>
-                            </FlowHoverButton>
+                            <span className="flex items-center gap-1.5 text-xs text-muted-foreground">
+                                <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
+                                {language === "nl" ? "Beschikbaar" : language === "fr" ? "Disponible" : "Available"}
+                            </span>
                         </div>
+                        <FlowHoverButton asChild size="lg" variant="default" className="w-full">
+                            <Link to="/contact">
+                                {t.startProject[language]}
+                                <ArrowRight className="ml-2 h-4 w-4" />
+                            </Link>
+                        </FlowHoverButton>
                     </div>
                 </div>
-            )}
+            </div>
         </header>
     );
 }
