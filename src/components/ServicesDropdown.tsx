@@ -39,7 +39,7 @@ export function ServicesDropdown({ children, isActive }: { children: React.React
 
       {/* The Dropdown Menu (Mega Menu) */}
       <div className="absolute left-1/2 -translate-x-1/2 top-full pt-4 opacity-0 invisible translate-y-2 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 transition-all duration-300 z-50">
-        <div className="w-[850px] bg-[#0a0a0a] border border-border/40 rounded-2xl shadow-2xl p-6 flex gap-8">
+        <div className="w-[850px] bg-background/95 backdrop-blur-xl border border-border/50 rounded-2xl shadow-2xl p-6 flex gap-8">
           
           {/* Column 1: Websites */}
           <div className="flex-1">
@@ -47,73 +47,73 @@ export function ServicesDropdown({ children, isActive }: { children: React.React
               {isNl ? "Websites" : "Websites"}
             </h4>
             <div className="flex flex-col gap-1">
-              <Link to="/services" className="flex items-start gap-3 p-3 rounded-xl hover:bg-white/5 transition-colors group/item">
+              <Link to="/diensten/website-laten-maken" className="flex items-start gap-3 p-3 rounded-xl hover:bg-muted/50 transition-colors group/item">
                 <Monitor className="w-5 h-5 text-primary mt-0.5 shrink-0" />
                 <div>
-                  <div className="text-sm font-bold text-white group-hover/item:text-primary transition-colors">
+                  <div className="text-sm font-bold text-foreground group-hover/item:text-primary transition-colors">
                     {isNl ? "Website laten maken" : "Have a website built"}
                   </div>
-                  <div className="text-xs text-white/50 mt-0.5">
+                  <div className="text-xs text-muted-foreground mt-0.5">
                     {isNl ? "Bekijk alle formules" : "View all formulas"}
                   </div>
                 </div>
               </Link>
               
-              <Link to="/services" className="flex items-start gap-3 p-3 rounded-xl hover:bg-white/5 transition-colors group/item">
+              <Link to="/diensten/betaalbare-website" className="flex items-start gap-3 p-3 rounded-xl hover:bg-muted/50 transition-colors group/item">
                 <Tag className="w-5 h-5 text-primary mt-0.5 shrink-0" />
                 <div>
-                  <div className="text-sm font-bold text-white group-hover/item:text-primary transition-colors">
+                  <div className="text-sm font-bold text-foreground group-hover/item:text-primary transition-colors">
                     {isNl ? "Betaalbare website" : "Affordable website"}
                   </div>
-                  <div className="text-xs text-white/50 mt-0.5">
+                  <div className="text-xs text-muted-foreground mt-0.5">
                     {isNl ? "Vanaf €299/jaar" : "From €299/year"}
                   </div>
                 </div>
               </Link>
               
-              <Link to="/services" className="flex items-start gap-3 p-3 rounded-xl hover:bg-white/5 transition-colors group/item">
+              <Link to="/diensten/website-compleet" className="flex items-start gap-3 p-3 rounded-xl hover:bg-muted/50 transition-colors group/item">
                 <PenTool className="w-5 h-5 text-primary mt-0.5 shrink-0" />
                 <div>
-                  <div className="text-sm font-bold text-white group-hover/item:text-primary transition-colors">
+                  <div className="text-sm font-bold text-foreground group-hover/item:text-primary transition-colors">
                     {isNl ? "Website compleet" : "Complete website"}
                   </div>
-                  <div className="text-xs text-white/50 mt-0.5">
+                  <div className="text-xs text-muted-foreground mt-0.5">
                     {isNl ? "Website, branding en juridisch" : "Website, branding and legal"}
                   </div>
                 </div>
               </Link>
               
-              <Link to="/services" className="flex items-start gap-3 p-3 rounded-xl hover:bg-white/5 transition-colors group/item">
+              <Link to="/diensten/webshop" className="flex items-start gap-3 p-3 rounded-xl hover:bg-muted/50 transition-colors group/item">
                 <ShoppingCart className="w-5 h-5 text-primary mt-0.5 shrink-0" />
                 <div>
-                  <div className="text-sm font-bold text-white group-hover/item:text-primary transition-colors">
+                  <div className="text-sm font-bold text-foreground group-hover/item:text-primary transition-colors">
                     {isNl ? "Webshop laten maken" : "Have a webshop built"}
                   </div>
-                  <div className="text-xs text-white/50 mt-0.5">
+                  <div className="text-xs text-muted-foreground mt-0.5">
                     {isNl ? "Direct online verkopen" : "Start selling online directly"}
                   </div>
                 </div>
               </Link>
               
-              <Link to="/services" className="flex items-start gap-3 p-3 rounded-xl hover:bg-white/5 transition-colors group/item">
+              <Link to="/diensten/analyse" className="flex items-start gap-3 p-3 rounded-xl hover:bg-muted/50 transition-colors group/item">
                 <BarChart className="w-5 h-5 text-primary mt-0.5 shrink-0" />
                 <div>
-                  <div className="text-sm font-bold text-white group-hover/item:text-primary transition-colors">
+                  <div className="text-sm font-bold text-foreground group-hover/item:text-primary transition-colors">
                     {isNl ? "Website analyse" : "Website analysis"}
                   </div>
-                  <div className="text-xs text-white/50 mt-0.5">
+                  <div className="text-xs text-muted-foreground mt-0.5">
                     {isNl ? "Inzicht in bezoekersgedrag" : "Insights into visitor behavior"}
                   </div>
                 </div>
               </Link>
               
-              <Link to="/services" className="flex items-start gap-3 p-3 rounded-xl hover:bg-white/5 transition-colors group/item">
+              <Link to="/diensten/herstel" className="flex items-start gap-3 p-3 rounded-xl hover:bg-muted/50 transition-colors group/item">
                 <ShieldAlert className="w-5 h-5 text-primary mt-0.5 shrink-0" />
                 <div>
-                  <div className="text-sm font-bold text-white group-hover/item:text-primary transition-colors">
+                  <div className="text-sm font-bold text-foreground group-hover/item:text-primary transition-colors">
                     {isNl ? "Website herstel" : "Website recovery"}
                   </div>
-                  <div className="text-xs text-white/50 mt-0.5">
+                  <div className="text-xs text-muted-foreground mt-0.5">
                     {isNl ? "Gehackt? Ik los het op" : "Hacked? I solve it"}
                   </div>
                 </div>
@@ -127,61 +127,61 @@ export function ServicesDropdown({ children, isActive }: { children: React.React
               {isNl ? "Diensten" : "Services"}
             </h4>
             <div className="flex flex-col gap-1">
-              <Link to="/services" className="flex items-start gap-3 p-3 rounded-xl hover:bg-white/5 transition-colors group/item">
+              <Link to="/diensten/seo" className="flex items-start gap-3 p-3 rounded-xl hover:bg-muted/50 transition-colors group/item">
                 <Search className="w-5 h-5 text-primary mt-0.5 shrink-0" />
                 <div>
-                  <div className="text-sm font-bold text-white group-hover/item:text-primary transition-colors">
+                  <div className="text-sm font-bold text-foreground group-hover/item:text-primary transition-colors">
                     {isNl ? "SEO diensten" : "SEO services"}
                   </div>
-                  <div className="text-xs text-white/50 mt-0.5">
+                  <div className="text-xs text-muted-foreground mt-0.5">
                     {isNl ? "Hoger scoren in Google" : "Rank higher in Google"}
                   </div>
                 </div>
               </Link>
               
-              <Link to="/services" className="flex items-start gap-3 p-3 rounded-xl hover:bg-white/5 transition-colors group/item">
+              <Link to="/diensten/google-ads" className="flex items-start gap-3 p-3 rounded-xl hover:bg-muted/50 transition-colors group/item">
                 <Zap className="w-5 h-5 text-primary mt-0.5 shrink-0" />
                 <div>
-                  <div className="text-sm font-bold text-white group-hover/item:text-primary transition-colors">
+                  <div className="text-sm font-bold text-foreground group-hover/item:text-primary transition-colors">
                     {isNl ? "Google Ads" : "Google Ads"}
                   </div>
-                  <div className="text-xs text-white/50 mt-0.5">
+                  <div className="text-xs text-muted-foreground mt-0.5">
                     {isNl ? "Direct zichtbaar in Google" : "Directly visible in Google"}
                   </div>
                 </div>
               </Link>
               
-              <Link to="/services" className="flex items-start gap-3 p-3 rounded-xl hover:bg-white/5 transition-colors group/item">
+              <Link to="/diensten/hosting" className="flex items-start gap-3 p-3 rounded-xl hover:bg-muted/50 transition-colors group/item">
                 <Server className="w-5 h-5 text-primary mt-0.5 shrink-0" />
                 <div>
-                  <div className="text-sm font-bold text-white group-hover/item:text-primary transition-colors">
+                  <div className="text-sm font-bold text-foreground group-hover/item:text-primary transition-colors">
                     {isNl ? "Webhosting en onderhoud" : "Web hosting and maintenance"}
                   </div>
-                  <div className="text-xs text-white/50 mt-0.5">
+                  <div className="text-xs text-muted-foreground mt-0.5">
                     {isNl ? "Hosting, backups en support" : "Hosting, backups and support"}
                   </div>
                 </div>
               </Link>
               
-              <Link to="/services" className="flex items-start gap-3 p-3 rounded-xl hover:bg-white/5 transition-colors group/item">
+              <Link to="/diensten/statistieken" className="flex items-start gap-3 p-3 rounded-xl hover:bg-muted/50 transition-colors group/item">
                 <Users className="w-5 h-5 text-primary mt-0.5 shrink-0" />
                 <div>
-                  <div className="text-sm font-bold text-white group-hover/item:text-primary transition-colors">
+                  <div className="text-sm font-bold text-foreground group-hover/item:text-primary transition-colors">
                     {isNl ? "Bezoekersstatistieken" : "Visitor statistics"}
                   </div>
-                  <div className="text-xs text-white/50 mt-0.5">
+                  <div className="text-xs text-muted-foreground mt-0.5">
                     {isNl ? "Statistieken en heatmaps" : "Statistics and heatmaps"}
                   </div>
                 </div>
               </Link>
               
-              <Link to="/services" className="flex items-start gap-3 p-3 rounded-xl hover:bg-white/5 transition-colors group/item">
+              <Link to="/diensten/microsoft365" className="flex items-start gap-3 p-3 rounded-xl hover:bg-muted/50 transition-colors group/item">
                 <Mail className="w-5 h-5 text-primary mt-0.5 shrink-0" />
                 <div>
-                  <div className="text-sm font-bold text-white group-hover/item:text-primary transition-colors">
+                  <div className="text-sm font-bold text-foreground group-hover/item:text-primary transition-colors">
                     {isNl ? "Mail met Microsoft 365" : "Mail with Microsoft 365"}
                   </div>
-                  <div className="text-xs text-white/50 mt-0.5">
+                  <div className="text-xs text-muted-foreground mt-0.5">
                     {isNl ? "Professioneel mailadres" : "Professional email address"}
                   </div>
                 </div>
@@ -190,7 +190,7 @@ export function ServicesDropdown({ children, isActive }: { children: React.React
           </div>
 
           {/* Column 3: CTA Panel */}
-          <div className="w-[280px] bg-[#1a1a1a] rounded-xl p-6 flex flex-col justify-center gap-4 shrink-0 border border-white/5">
+          <div className="w-[280px] bg-muted/30 rounded-xl p-6 flex flex-col justify-center gap-4 shrink-0 border border-border/50">
             <Link to="/contact" className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-lg p-4 transition-colors">
               <div className="font-bold text-base mb-1">
                 {isNl ? "Offerte aanvragen" : "Request a quote"}
