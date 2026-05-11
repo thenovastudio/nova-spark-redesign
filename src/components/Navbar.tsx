@@ -67,15 +67,12 @@ export function Navbar() {
                         <Link
                             key={link.href}
                             to={link.href}
-                            className={`text-sm font-medium transition-all duration-200 relative ${location.pathname === link.href
-                                ? "text-primary"
+                            className={`text-sm font-medium transition-all duration-200 px-3 py-1.5 rounded-lg ${location.pathname === link.href
+                                ? "bg-primary text-primary-foreground"
                                 : "text-muted-foreground hover:text-foreground"
                                 }`}
                         >
                             {link.label}
-                            {location.pathname === link.href && (
-                                <div className="absolute bottom-0 left-0 right-0 h-1 bg-primary rounded-full" />
-                            )}
                         </Link>
                     ))}
                 </div>
