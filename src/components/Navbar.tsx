@@ -114,7 +114,7 @@ export function Navbar() {
 
             {/* ── Mobile Menu: Fullscreen Overlay ──────────────────── */}
             <div
-                className={`lg:hidden fixed inset-0 bg-background/98 backdrop-blur-xl z-50 transition-all duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] ${
+                className={`lg:hidden fixed inset-0 bg-background z-50 transition-all duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] ${
                     isMobileMenuOpen
                         ? "opacity-100 pointer-events-auto"
                         : "opacity-0 pointer-events-none"
