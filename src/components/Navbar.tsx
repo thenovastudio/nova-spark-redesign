@@ -6,6 +6,7 @@ import { ArrowRight } from "lucide-react";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
 import { CurtainThemeToggle } from "@/components/ui/curtain-theme-toggle";
 import { LanguageDropdown } from "@/components/LanguageDropdown";
+import { ServicesDropdown } from "@/components/ServicesDropdown";
 import { translations } from "@/lib/i18n/translations";
 import codevioLogo from "@/components/codevio-logo.png";
 import codevioLogoDark from "@/components/codevio-logo.darkmode.png";
@@ -151,18 +152,31 @@ export function Navbar() {
 
                     {/* Desktop Navigation */}
                     <div className="hidden lg:flex items-center gap-8">
-                        {navLinks.map((link) => (
-                            <Link
-                                key={link.href}
-                                to={link.href}
-                                className={`text-sm font-medium transition-all duration-200 px-3 py-1.5 rounded-lg ${location.pathname === link.href
-                                    ? "bg-primary text-primary-foreground"
-                                    : "text-muted-foreground hover:text-foreground"
-                                    }`}
-                            >
-                                {link.label}
-                            </Link>
-                        ))}
+                        {navLinks.map((link) => {
+                            const isServices = link.href === "/services";
+                            const linkElement = (
+                                <Link
+                                    key={link.href}
+                                    to={link.href}
+                                    className={`text-sm font-medium transition-all duration-200 px-3 py-1.5 rounded-lg ${location.pathname === link.href && !isServices
+                                        ? "bg-primary text-primary-foreground"
+                                        : "text-muted-foreground hover:text-foreground"
+                                        }`}
+                                >
+                                    {link.label}
+                                </Link>
+                            );
+
+                            if (isServices) {
+                                return (
+                                    <ServicesDropdown key={link.href} isActive={location.pathname === link.href}>
+                                        {link.label}
+                                    </ServicesDropdown>
+                                );
+                            }
+
+                            return linkElement;
+                        })}
                     </div>
 
                     <div className="hidden lg:flex items-center gap-3">
@@ -171,6 +185,9 @@ export function Navbar() {
                             <div className="w-px h-5 bg-border/50" />
                             <LanguageDropdown />
                         </div>
+                        <FlowHoverButton asChild size="default" variant="outline">
+                            <Link to="/pricing">{t.pricing[language]}</Link>
+                        </FlowHoverButton>
                         <FlowHoverButton asChild size="default" variant="default">
                             <Link to="/contact">{t.startProject[language]}</Link>
                         </FlowHoverButton>

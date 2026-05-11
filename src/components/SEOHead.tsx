@@ -2,7 +2,7 @@ import { Helmet } from "react-helmet-async";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 interface SEOHeadProps {
-  page?: "home" | "work" | "services" | "why" | "about" | "apps" | "contact";
+  page?: "home" | "work" | "services" | "why" | "about" | "apps" | "contact" | "pricing";
 }
 
 const seoData = {
@@ -123,6 +123,23 @@ const seoData = {
       title: "Nos Applications | Outils pour Votre Entreprise | Codevio",
       description: "Découvrez les outils et les plateformes que nous avons créés pour aider les entreprises. Monitra pour l'analytique, Social pour la gestion des médias sociaux.",
       keywords: "monitra, social, outils analytique, gestion médias sociaux, surveillance site, applications métier",
+    },
+  },
+  pricing: {
+    nl: {
+      title: "Prijzen | Wat Kost Een Website? | Codevio",
+      description: "Transparante website prijzen vanaf €199. ✓ Vaste prijs ✓ Geen verborgen kosten ✓ 4 pakketten voor elk budget. Ontdek onze webdesign tarieven.",
+      keywords: "website prijs, wat kost een website, webdesign prijzen, website pakket, website laten maken kosten, goedkope website, website tarieven België",
+    },
+    en: {
+      title: "Pricing | What Does A Website Cost? | Codevio",
+      description: "Transparent website pricing from €199. ✓ Fixed price ✓ No hidden fees ✓ 4 packages for every budget. Discover our web design rates.",
+      keywords: "website price, website cost, web design pricing, website package, website rates, affordable website, web design rates Belgium",
+    },
+    fr: {
+      title: "Tarifs | Combien Coûte Un Site Web ? | Codevio",
+      description: "Tarifs transparents à partir de 199€. ✓ Prix fixe ✓ Sans frais cachés ✓ 4 forfaits pour chaque budget. Découvrez nos tarifs de design web.",
+      keywords: "prix site web, coût site web, tarifs design web, forfait site, tarifs web, site abordable, tarifs web Belgique",
     },
   },
 };

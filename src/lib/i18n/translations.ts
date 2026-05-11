@@ -11,6 +11,7 @@ export const translations = {
         apps: { nl: "Onze Apps", en: "Our Apps", fr: "Nos Applications" },
         contact: { nl: "Contact", en: "Contact", fr: "Contact" },
         startProject: { nl: "Start uw project", en: "Start a Project", fr: "Démarrer un Projet" },
+        pricing: { nl: "Wat kost een website?", en: "Website pricing", fr: "Tarifs site web" },
     },
 
     // Hero Section
