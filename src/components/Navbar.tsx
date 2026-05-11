@@ -141,9 +141,9 @@ export function Navbar() {
         <>
             {mobileMenu}
             <header
-                className={`fixed z-[9999] transition-all duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] ${isScrolled
-                    ? "top-4 left-4 right-4 lg:left-8 lg:right-8 xl:max-w-7xl xl:mx-auto bg-background/80 backdrop-blur-xl border border-border/50 py-3 rounded-2xl shadow-sm"
-                    : "top-0 left-0 right-0 bg-background/70 backdrop-blur-md border-b border-transparent py-5"
+                className={`fixed top-0 left-0 right-0 z-[9999] transition-all duration-300 ${isScrolled
+                    ? "bg-background/80 backdrop-blur-lg border-b border-border/50 py-3"
+                    : "bg-background/70 backdrop-blur-md border-b border-transparent py-5"
                     }`}
             >
                 <nav className="container px-4 md:px-6 flex items-center justify-between">
