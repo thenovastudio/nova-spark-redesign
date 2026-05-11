@@ -32,7 +32,7 @@ export function PortfolioPreview() {
   ];
 
   return (
-    <section className="section-padding bg-background">
+    <section className="section-padding bg-background hidden md:block">
       <div className="container">
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-16">
           <div>
